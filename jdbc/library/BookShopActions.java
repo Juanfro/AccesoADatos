@@ -20,7 +20,7 @@ public class BookShopActions {
 	 * @param conn
 	 * @throws AccesoDatosException
 	 */
-	public BookShopActions(Connection conn) throws AccesoDatosException {
+	public BookShopActions(Connection conn) /* throws AccesoDatosException */ {
 		conn = conn;
 	}
 
@@ -32,16 +32,19 @@ public class BookShopActions {
 		// Sentencia
 		stmt = null;
 		// Conjunto de Resultadors a obtener de la sentencia SQL
-		rs = null;
+
+		rSet = null;
 
 	}
 
-	public String[] getBookAttributes() throws AccesoDatosException {
+	public String[] getBookAttributes() /* throws AccesoDatosException */ {
 
 		String catalog = null;
 		String schemaPatter = null;
 		String tablePattern = null;
 		// TODO
+
+		return null;
 
 	}
 

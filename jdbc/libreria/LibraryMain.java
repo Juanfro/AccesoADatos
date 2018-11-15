@@ -1,5 +1,9 @@
 package libreria;
 
+import java.sql.Connection;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 /**
  * <h1>GESTIÓN DE UNA librería</h1>
  * <p>
@@ -81,7 +85,59 @@ package libreria;
  */
 public class LibraryMain {
 
+	static Connection con;
+
 	public static void main(String[] args) {
+		LibraryMain myLibrary = new LibraryMain();
+		AccionesLibreria acciones = new AccionesLibreria(con);
+
+		while (true) {
+			myLibrary.menu();
+		}
+
+	}
+
+	void menu() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("\n¿Qué quieres hacer?\n");
+		System.out.println("1. Ver catálogo inverso ");
+		System.out.println("2. Actualiza Número de copias");
+		System.out.println("3. Rellenar precio");
+		System.out.println("4. Recuperar campos de la tabla de libros");
+		System.out.println("5. Aplicar descuento");
+
+		try {
+			int opcion = sc.nextInt();
+
+			switch (opcion) {
+			case 1:
+				System.out.println("Opción 1: Ver catálogo inverso");
+				break;
+			case 2:
+				System.out.println("Opcion 2: Actualiza Número de copias");
+				break;
+			case 3:
+				System.out.println("Opcion 3: Rellenar precio");
+				break;
+			case 4:
+				System.out.println("Opcion 4: Recuperar campos de la tabla de libros");
+				break;
+			case 5:
+				System.out.println("Opcion 5: Aplicar descuento\n");
+				break;
+
+			default:
+				System.out.println("\nDebes elegir una opcion entre las disponibles");
+				break;
+			}
+		}catch (InputMismatchException e) {
+			//e.printStackTrace();
+			System.out.println("Debes introducir un número correspondiente a las opciones disponibles");
+			menu();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 
