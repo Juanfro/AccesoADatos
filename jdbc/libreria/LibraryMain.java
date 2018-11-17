@@ -1,6 +1,7 @@
 package libreria;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -86,10 +87,18 @@ import java.util.Scanner;
 public class LibraryMain {
 
 	static Connection con;
+	static AccionesLibreria acciones;
+	static DBConnection instanceConectionConection;
 
 	public static void main(String[] args) {
 		LibraryMain myLibrary = new LibraryMain();
-		AccionesLibreria acciones = new AccionesLibreria(con);
+		try {
+			instanceConectionConection = DBConnection.getInstance();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		con = instanceConectionConection.getConnection();
+		acciones = new AccionesLibreria(con);
 
 		while (true) {
 			myLibrary.menu();
@@ -112,6 +121,7 @@ public class LibraryMain {
 			switch (opcion) {
 			case 1:
 				System.out.println("Opción 1: Ver catálogo inverso");
+				acciones.mostrarCatalogoInverso();
 				break;
 			case 2:
 				System.out.println("Opcion 2: Actualiza Número de copias");
@@ -130,12 +140,11 @@ public class LibraryMain {
 				System.out.println("\nDebes elegir una opcion entre las disponibles");
 				break;
 			}
-		}catch (InputMismatchException e) {
-			//e.printStackTrace();
+		} catch (InputMismatchException e) {
+			// e.printStackTrace();
 			System.out.println("Debes introducir un número correspondiente a las opciones disponibles");
 			menu();
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
