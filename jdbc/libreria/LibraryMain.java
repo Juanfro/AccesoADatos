@@ -2,6 +2,7 @@ package libreria;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -125,15 +126,24 @@ public class LibraryMain {
 				break;
 			case 2:
 				System.out.println("Opcion 2: Actualiza Número de copias");
+				HashMap<Integer, Integer> hashMap = new HashMap<>();
+				hashMap.put(1325, 5);
+				hashMap.put(1725, 3);
+				hashMap.put(12345, 10);
+				hashMap.put(12453, 8);
+				acciones.actualizaNumeroCopias(hashMap);
 				break;
 			case 3:
 				System.out.println("Opcion 3: Rellenar precio");
+				acciones.rellenaPrecio(0.05f);
 				break;
 			case 4:
 				System.out.println("Opcion 4: Recuperar campos de la tabla de libros");
+				acciones.recuperaCampos();
 				break;
 			case 5:
 				System.out.println("Opcion 5: Aplicar descuento\n");
+				acciones.aplicaDescuento(0.85f);
 				break;
 
 			default:
