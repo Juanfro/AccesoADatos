@@ -40,7 +40,7 @@ public class AccionesLibreria {
 				System.out.println("Titulo: " + result.getString("titulo") + " | Autor: " + result.getString("autor")
 						+ " | Editorial: " + result.getString("editorial") + " | ISBN: " + result.getInt("isbn")
 						+ " | Copias: " + result.getInt("copias") + " | Número de páginas: " + result.getInt("paginas")
-						+ " | Preci5o: " + result.getFloat("precio"));
+						+ " | Precio: " + result.getFloat("precio"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
