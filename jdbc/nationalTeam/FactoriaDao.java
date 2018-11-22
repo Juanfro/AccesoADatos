@@ -12,7 +12,11 @@ import javax.management.InstanceAlreadyExistsException;
 import seleccion.PlayerDao;
 
 public class FactoriaDao {
+	
+	private static FactoriaDao instance;
 	Properties DaoProps;
+	
+	
 
 	public static FactoriaDao getInstance() {// Devuleve un objeto de su misma clase
 		if (instance == null) {
