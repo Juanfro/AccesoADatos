@@ -1,0 +1,46 @@
+package seleccionJDBC;
+
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class JugadorJDBC implements Serializable {
+
+	public static enum PositionJDBC {
+		PORTERO, DEFENSA, MEDIO, DELANTERO
+	}
+
+	private int dorsal;
+	private String nombre;
+	private PositionJDBC position;
+
+	public JugadorJDBC(int dorsal, String nombre, PositionJDBC position) {
+		this.dorsal = dorsal;
+		this.nombre = nombre;
+		this.position = position;
+	}
+
+	public int getDorsal() {
+		return dorsal;
+	}
+
+	public void setDorsal(int dorsal) {
+		this.dorsal = dorsal;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public PositionJDBC getPosition() {
+		return position;
+	}
+
+	public void setPosition(PositionJDBC position) {
+		this.position = position;
+	}
+
+}

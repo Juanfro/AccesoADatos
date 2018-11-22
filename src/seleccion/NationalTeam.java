@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Scanner;
 
 import seleccion.Player.Position;
+import seleccionJDBC.JugadorJDBC;
+import seleccionJDBC.JugadorJDBC.PositionJDBC;
 
 /**
  * Escribe un programa Java que ayude a Luis Enrique a conformar su lista de
@@ -224,13 +226,13 @@ public class NationalTeam {
 	 * Borrar un jugador
 	 */
 	static void deletePlayer() {
-		
+
 		Scanner scBorrar = new Scanner(System.in);
 		int number;
-		
+
 		System.out.println("\nBORRAR JUGADOR:\n");
 		System.out.println("Escribe el número de dorsal del jugador a borrar:");
-		
+
 		number = scBorrar.nextInt();
 		playerDao.delete(number);
 		// TODO Borrar jugador

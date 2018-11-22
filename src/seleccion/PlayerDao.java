@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import seleccion.Player.Position;
+import seleccionJDBC.JugadorJDBC;
+import seleccionJDBC.JugadorJDBC.PositionJDBC;
 
 public class PlayerDao implements Dao<Player> {
 

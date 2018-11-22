@@ -12,14 +12,14 @@ public class Player implements Serializable {
 	private int number;
 	private String name;
 	private String position;
-	
-	
-/**Constructor de Player
- * 
- * @param number Dorsal del jugador
- * @param name Nombre del Jugador
- * @param position Posición del Jugador
- */
+
+	/**
+	 * Constructor de Player
+	 * 
+	 * @param number   Dorsal del jugador
+	 * @param name     Nombre del Jugador
+	 * @param position Posición del Jugador
+	 */
 	public Player(int number, String name, Position position) {
 		super();
 		this.number = number;
@@ -51,7 +51,6 @@ public class Player implements Serializable {
 		this.position = position.toString();
 	}
 
-	
 	/*
 	 * public String getPosition() { return position; }
 	 * 
