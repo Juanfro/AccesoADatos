@@ -12,11 +12,9 @@ import javax.management.InstanceAlreadyExistsException;
 import seleccion.PlayerDao;
 
 public class FactoriaDao {
-	
+
 	private static FactoriaDao instance;
 	Properties DaoProps;
-	
-	
 
 	public static FactoriaDao getInstance() {// Devuleve un objeto de su misma clase
 		if (instance == null) {
@@ -50,17 +48,16 @@ public class FactoriaDao {
 				config.put("dbName", DaoProps.getProperty("database_name"));
 				config.put("userName", DaoProps.getProperty("user_name"));
 				config.put("password", DaoProps.getProperty("password"));
-				//TODO
-				
-				
+				// TODO
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if (playerDao.equals("PlayerRAFDao")) {
+		} else if (playerDao.equals("PlayerRAFDao")) {
 			try {
 				Map<String, String> config = new HashMap<String, String>();
-				config.put("fileName", value);
-				
+				config.put("fileName", DaoProps.getProperty("filename"));
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

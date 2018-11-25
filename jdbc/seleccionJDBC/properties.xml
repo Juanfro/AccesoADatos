@@ -2,5 +2,10 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	<comment></comment>
-	<entry key="playerdao">jdbc</entry>
+	<entry key="playerdao">JugadorJDBCDao</entry>
+	<entry key="dbms">mysql</entry>
+	<entry key="database_name">libreria</entry>
+	<entry key="username">root</entry>
+	<entry key="password"></entry>
+	<entry key="filename">jugadores.dat</entry>
 </properties>

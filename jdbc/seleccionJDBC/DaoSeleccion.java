@@ -9,7 +9,7 @@ import java.util.List;
  * @param <T>
  */
 
-public interface DaoJDBC<T> {
+public interface DaoSeleccion<T> {
 
 	T get(int id);
 

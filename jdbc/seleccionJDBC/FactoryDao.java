@@ -3,7 +3,9 @@ package seleccionJDBC;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.InvalidPropertiesFormatException;
+import java.util.Map;
 import java.util.Properties;
 
 public class FactoryDao {
@@ -12,6 +14,8 @@ public class FactoryDao {
 	Properties daoProps;
 	String playerDao;
 	String configFile = "properties.xml";
+
+	DaoSeleccion<JugadorJDBC> daoSeleccion;
 
 	private FactoryDao() {
 		setDaoType(configFile);
@@ -38,11 +42,34 @@ public class FactoryDao {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		daoSeleccion = getDao();
 	}
 
-	public DaoJDBC getDao() {
+	/**
+	 * Lee
+	 * 
+	 * @return
+	 */
+	public DaoSeleccion<JugadorJDBC> getDao() {
 
-		DaoJDBC dao = null;
+		DaoSeleccion<JugadorJDBC> dao = null;
+
+		if (playerDao.equals("JugadorJDBCDao")) {// DAO base de datos
+			Map<String, String> config = new HashMap<String, String>();
+			config.put("dbms", daoProps.getProperty("dbms"));
+			config.put("dbName", daoProps.getProperty("database_name"));
+			config.put("username", daoProps.getProperty("user_name"));
+			config.put("password", daoProps.getProperty("password"));
+
+			dao = new JugadorJDBCDao();
+
+		} else if (playerDao.equals("JugadorRAFDao")) {// DAO random access file
+			Map<String, String> config = new HashMap<String, String>();
+			config.put("filename", daoProps.getProperty("filename"));
+
+			dao = new JugadorRAFDao();
+		}
 
 		return dao;
 	}
