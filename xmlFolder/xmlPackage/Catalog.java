@@ -1,4 +1,4 @@
-package xml;
+package xmlPackage;
 
 import java.util.ArrayList;
 
