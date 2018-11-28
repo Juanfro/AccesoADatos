@@ -1,5 +1,8 @@
 package seleccionJDBC;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 /**
  * Escribe un programa que realice la misma funcionalidad que el ejercicio del
  * mismo nombre en la batería de programas anterior, pero utilizando una base de
@@ -35,7 +38,89 @@ package seleccionJDBC;
  */
 public class SeleccionJDBCMain {
 
+	static boolean fin;
+	static SeleccionJDBCMain seleccion;
+
+	private static DaoSeleccion<JugadorJDBC> jugadorDao;
+
 	public static void main(String[] args) {
+
+		fin = false;
+
+		seleccion = new SeleccionJDBCMain();
+
+		try {
+
+			jugadorDao = FactoryDao.getInstance().getDao();
+
+			seleccion.bienVenido();
+
+			while (!fin) {
+				seleccion.gestionar();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	private void bienVenido() {
+		System.out.println("Bienvenido Seleccionador"); // TODO ¿Se puede escribir el nombre en el xml?
+		listadoJugadores();
+	}
+
+	private void listadoJugadores() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	void gestionar() {
+
+		System.out.println("\nIntroduzca operación a realizar");
+		System.out.println("1. Añadir Jugador");
+		System.out.println("2. Borrar Jugador");
+		System.out.println("3. Salir");
+
+		try {
+			Scanner sc = new Scanner(System.in);
+			int option = sc.nextInt();
+
+			switch (option) {
+			case 1:
+				addPlayer();
+				break;
+
+			case 2:
+				deletePlayer();
+				break;
+
+			case 3:
+				fin();
+				break;
+
+			default:
+				System.out.println("\nOpcion inválida");
+				gestionar();
+				break;
+			}
+		} catch (InputMismatchException e) {
+			System.out.println("\nOpcion inválida. Debes escribir un número");
+			gestionar();
+		}
+
+	}
+
+	private void addPlayer() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void deletePlayer() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void fin() {
 		// TODO Auto-generated method stub
 
 	}

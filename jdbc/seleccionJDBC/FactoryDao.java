@@ -61,6 +61,8 @@ public class FactoryDao {
 			config.put("dbName", daoProps.getProperty("database_name"));
 			config.put("username", daoProps.getProperty("user_name"));
 			config.put("password", daoProps.getProperty("password"));
+			config.put("serverName", daoProps.getProperty("server_name"));
+			config.put("portNumber", daoProps.getProperty("port_number"));
 
 			dao = new JugadorJDBCDao();
 

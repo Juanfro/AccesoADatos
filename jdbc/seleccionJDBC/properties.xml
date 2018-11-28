@@ -4,8 +4,10 @@
 	<comment></comment>
 	<entry key="playerdao">JugadorJDBCDao</entry>
 	<entry key="dbms">mysql</entry>
-	<entry key="database_name">libreria</entry>
+	<entry key="database_name">seleccion</entry>
 	<entry key="username">root</entry>
 	<entry key="password"></entry>
+	<entry key="server_name">localhost</entry>
+	<entry key="port_number">3306</entry>
 	<entry key="filename">jugadores.dat</entry>
 </properties>
