@@ -31,8 +31,6 @@ import java.util.Scanner;
  * Es importante tener en cuenta que solamente se lee y se graban los datos al
  * fichero de jugadores cuando se inicia y finaliza la ejecución del programa.
  * 
- * 
- * 
  * @author Juan Antonio Rodriguez
  *
  */
@@ -70,8 +68,8 @@ public class SeleccionJDBCMain {
 	}
 
 	private void listadoJugadores() {
-		// TODO Auto-generated method stub
-		
+		jugadorDao.getAll();
+
 	}
 
 	void gestionar() {
@@ -87,15 +85,15 @@ public class SeleccionJDBCMain {
 
 			switch (option) {
 			case 1:
-				addPlayer();
+				addPlayer();// Añadir jugador
 				break;
 
 			case 2:
-				deletePlayer();
+				deletePlayer();// Borrar Jugador
 				break;
 
 			case 3:
-				fin();
+				fin();// Salir
 				break;
 
 			default:

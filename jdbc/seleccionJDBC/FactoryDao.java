@@ -13,7 +13,7 @@ public class FactoryDao {
 	private static FactoryDao instance;
 	Properties daoProps;
 	String playerDao;
-	String configFile = "properties.xml";
+	String configFile = "jdbc/seleccionJDBC/properties.xml";
 
 	DaoSeleccion<JugadorJDBC> daoSeleccion;
 
@@ -64,7 +64,7 @@ public class FactoryDao {
 			config.put("serverName", daoProps.getProperty("server_name"));
 			config.put("portNumber", daoProps.getProperty("port_number"));
 
-			dao = new JugadorJDBCDao();
+			dao = new JugadorJDBCDao(config);
 
 		} else if (playerDao.equals("JugadorRAFDao")) {// DAO random access file
 			Map<String, String> config = new HashMap<String, String>();
