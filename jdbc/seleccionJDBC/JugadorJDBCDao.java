@@ -8,9 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import seleccionJDBC.JugadorJDBC.PositionJDBC;
+
 public class JugadorJDBCDao implements DaoSeleccion<JugadorJDBC> {
 
-	private static final String SELECT_TODOS_JUGADORES = "select * from jugador order by dorsal";//TODO falta la sentencia SQL
+	private static final String SELECT_TODOS_JUGADORES = "select * from jugador order by dorsal";// TODO falta la
+																									// sentencia SQL
 	Connection con;
 	DBConnectionSeleccion instance;
 
@@ -31,14 +34,29 @@ public class JugadorJDBCDao implements DaoSeleccion<JugadorJDBC> {
 
 	@Override
 	public List<JugadorJDBC> getAll() {
-		
+
 		List<JugadorJDBC> listaJugadores = new ArrayList<JugadorJDBC>();
+		JugadorJDBC jugador;
+		int dorsal;
+		String nombre;
+		PositionJDBC posicion;
+		;
 
 		try {
 			Statement statement = con.createStatement();
-			ResultSet resultSet =statement.executeQuery(SELECT_TODOS_JUGADORES);
+			ResultSet resultSet = statement.executeQuery(SELECT_TODOS_JUGADORES);
+
+			while (resultSet.next()) {
+				dorsal = resultSet.getInt("dorsal");
+				nombre = resultSet.getString("nombre");
+				
+				
+				posicion = PositionJDBC.valueOf(resultSet.getString("posicion").toUpperCase());
+				jugador = new JugadorJDBC(dorsal, nombre, posicion);
+				
+				listaJugadores.add(jugador);
+			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

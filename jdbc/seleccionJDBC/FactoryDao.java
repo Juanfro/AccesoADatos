@@ -59,7 +59,7 @@ public class FactoryDao {
 			Map<String, String> config = new HashMap<String, String>();
 			config.put("dbms", daoProps.getProperty("dbms"));
 			config.put("dbName", daoProps.getProperty("database_name"));
-			config.put("username", daoProps.getProperty("user_name"));
+			config.put("userName", daoProps.getProperty("user_name"));
 			config.put("password", daoProps.getProperty("password"));
 			config.put("serverName", daoProps.getProperty("server_name"));
 			config.put("portNumber", daoProps.getProperty("port_number"));

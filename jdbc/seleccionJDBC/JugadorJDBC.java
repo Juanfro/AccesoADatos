@@ -43,4 +43,12 @@ public class JugadorJDBC implements Serializable {
 		this.position = position;
 	}
 
+	@Override
+	public String toString() {
+		
+		String toString =String.format("%-9s %-48s %-30s", "Dorsal: " + dorsal, " | Nombre: " + nombre, " | Posición: " +  position);
+		//return "Dorsal:" + dorsal + " | Nombre:" + nombre + " | Posición:" + position + "";
+		return toString;
+	}
+
 }

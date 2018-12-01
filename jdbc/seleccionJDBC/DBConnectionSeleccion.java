@@ -19,7 +19,7 @@ public class DBConnectionSeleccion {
 	private DBConnectionSeleccion(Map<String, String> config) throws SQLException {
 
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			//Class.forName("com.mysql.jdbc.Driver");
 
 			String dbms = config.get("dbms");
 			String dbName = config.get("dbName");
@@ -28,7 +28,8 @@ public class DBConnectionSeleccion {
 			String serverName = config.get("serverName");
 			Integer portNumber = Integer.parseInt(config.get("portNumber"));
 
-			String url = "jdbc:" + dbms + "://" + serverName + ":" + portNumber + "/" + dbName;
+			String url = "jdbc:" + dbms + "://" + serverName + ":" + portNumber + "/" + dbName
+					+ "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 
 			cnx = DriverManager.getConnection(url, userName, password);
 

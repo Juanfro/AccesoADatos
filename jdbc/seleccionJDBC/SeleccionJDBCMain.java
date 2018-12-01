@@ -1,6 +1,8 @@
 package seleccionJDBC;
 
 import java.util.InputMismatchException;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -63,15 +65,26 @@ public class SeleccionJDBCMain {
 	}
 
 	private void bienVenido() {
-		System.out.println("Bienvenido Seleccionador"); // TODO ¿Se puede escribir el nombre en el xml?
+		System.out.println("Bienvenido Seleccionador");
 		listadoJugadores();
 	}
 
 	private void listadoJugadores() {
-		jugadorDao.getAll();
+		List<JugadorJDBC> listaJugadores = jugadorDao.getAll();
+
+		Iterator<JugadorJDBC> iterator = listaJugadores.iterator();
+
+		while (iterator.hasNext()) {
+			// JugadorJDBC jugadorJDBC = (JugadorJDBC) iterator.next();
+
+			JugadorJDBC jugador = iterator.next();
+			System.out.println(jugador.toString());
+
+		}
 
 	}
 
+	@SuppressWarnings("resource")
 	void gestionar() {
 
 		System.out.println("\nIntroduzca operación a realizar");
