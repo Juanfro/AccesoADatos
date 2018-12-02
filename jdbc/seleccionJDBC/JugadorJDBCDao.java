@@ -1,6 +1,7 @@
 package seleccionJDBC;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,8 +13,10 @@ import seleccionJDBC.JugadorJDBC.PositionJDBC;
 
 public class JugadorJDBCDao implements DaoSeleccion<JugadorJDBC> {
 
-	private static final String SELECT_TODOS_JUGADORES = "select * from jugador order by dorsal";// TODO falta la
-																									// sentencia SQL
+	private static final String SELECT_TODOS_JUGADORES = "select * from jugador order by dorsal";
+	private static final String INSERT_PLAYER = "INSERT INTO jugador (dorsal, nombre, posicion) VALUES (?, ?, ?)";
+	private static final String DELETE_PLAYER = "DELETE FROM jugador WHERE dorsal=? ";
+
 	Connection con;
 	DBConnectionSeleccion instance;
 
@@ -28,7 +31,6 @@ public class JugadorJDBCDao implements DaoSeleccion<JugadorJDBC> {
 
 	@Override
 	public JugadorJDBC get(int id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -49,11 +51,10 @@ public class JugadorJDBCDao implements DaoSeleccion<JugadorJDBC> {
 			while (resultSet.next()) {
 				dorsal = resultSet.getInt("dorsal");
 				nombre = resultSet.getString("nombre");
-				
-				
+
 				posicion = PositionJDBC.valueOf(resultSet.getString("posicion").toUpperCase());
 				jugador = new JugadorJDBC(dorsal, nombre, posicion);
-				
+
 				listaJugadores.add(jugador);
 			}
 		} catch (SQLException e) {
@@ -64,14 +65,34 @@ public class JugadorJDBCDao implements DaoSeleccion<JugadorJDBC> {
 	}
 
 	@Override
-	public void save(JugadorJDBC t) {
-		// TODO Auto-generated method stub
+	public void save(JugadorJDBC jugador) {
+		try {
+			PreparedStatement preparedStatement = con.prepareStatement(INSERT_PLAYER);
+
+			preparedStatement.setInt(1, jugador.getDorsal());
+			preparedStatement.setString(2, jugador.getNombre());
+			preparedStatement.setString(3, jugador.getPosition().name());
+
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 	}
 
 	@Override
 	public void delete(int num) {
 		// TODO Auto-generated method stub
+		try {
+			PreparedStatement preparedStatement = con.prepareStatement(DELETE_PLAYER);
+			preparedStatement.setInt(1, num);
+
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 	}
 

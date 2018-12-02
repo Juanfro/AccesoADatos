@@ -12,20 +12,22 @@ public class PlayerJDBCDao implements Dao<Player, Integer> {
 			int number = rs.getInt("number");
 			String name = rs.getString("name");
 			String surname = rs.getString("surname");
-			String name = rs.getString("name");
+			String position = rs.getString("position");
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
+		return player;
 
 	}
 
-	public public PlayerJDBCDao() {
+	public PlayerJDBCDao() {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public Player get(Integer numPlayer) throws DAOException {
+		Player player = null;// TODO
 
 		return player;
 	}

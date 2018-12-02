@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
+import seleccionJDBC.JugadorJDBC.PositionJDBC;
+
 /**
  * Escribe un programa que realice la misma funcionalidad que el ejercicio del
  * mismo nombre en la batería de programas anterior, pero utilizando una base de
@@ -122,17 +124,78 @@ public class SeleccionJDBCMain {
 	}
 
 	private void addPlayer() {
-		// TODO Auto-generated method stub
+
+		int dorsal;
+		String nombre;
+		PositionJDBC position;
+
+		Scanner scNewJugador = new Scanner(System.in);
+
+		System.out.println("\nAÑADIR JUGADOR:\n");
+
+		// Dorsal
+		System.out.println("Dorsal del jugador:");
+		dorsal = Integer.parseInt(scNewJugador.nextLine());
+
+		// Nombre
+		System.out.println("Nombre del jugador:");
+		nombre = scNewJugador.nextLine();
+
+		// Posición
+		System.out.println("Elige la posición del jugador:");
+		System.out.println("1 - PORTERO");
+		System.out.println("2 - DEFENSA");
+		System.out.println("3 - MEDIO");
+		System.out.println("4 - DELANTERO");
+
+		int opcion = scNewJugador.nextInt();
+		position = null;
+
+		switch (opcion) {
+		case 1:
+			position = PositionJDBC.PORTERO;
+			break;
+		case 2:
+			position = PositionJDBC.DEFENSA;
+			break;
+		case 3:
+			position = PositionJDBC.MEDIO;
+			break;
+		case 4:
+			position = PositionJDBC.DELANTERO;
+			break;
+
+		default:
+			break;
+		}
+
+		JugadorJDBC jugador = new JugadorJDBC(dorsal, nombre, position);
+		jugadorDao.save(jugador);
+
+		System.out.println("Jugador añadido. Dorsal: " + dorsal + " | Nombre: " + nombre + " | Posición: " + position);
 
 	}
 
 	private void deletePlayer() {
-		// TODO Auto-generated method stub
+		Scanner scDelete = new Scanner(System.in);
+		int numDorsal;
+
+		System.out.println("\nBORRAR JUGADOR\n");
+
+		System.out.println("Escribe el número de dorsal del jugador a borrar:");
+		numDorsal = scDelete.nextInt();
+
+		jugadorDao.delete(numDorsal);
+
+		System.out.println("Jugador " + numDorsal + " borrado");
 
 	}
 
 	private void fin() {
-		// TODO Auto-generated method stub
+		fin=true;
+		
+		listadoJugadores();
+		System.out.println("A por ellos OEOEOE!!");
 
 	}
 
