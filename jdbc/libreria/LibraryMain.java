@@ -98,6 +98,7 @@ public class LibraryMain {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		con = instanceConection.getConnection();
 		acciones = new AccionesLibreria(con);
 
