@@ -89,16 +89,16 @@ public class LibraryMain {
 
 	static Connection con;
 	static AccionesLibreria acciones;
-	static DBConnection instanceConectionConection;
+	static DBConnection instanceConection;
 
 	public static void main(String[] args) {
 		LibraryMain myLibrary = new LibraryMain();
 		try {
-			instanceConectionConection = DBConnection.getInstance();
+			instanceConection = DBConnection.getInstance();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		con = instanceConectionConection.getConnection();
+		con = instanceConection.getConnection();
 		acciones = new AccionesLibreria(con);
 
 		while (true) {
@@ -121,33 +121,36 @@ public class LibraryMain {
 
 			switch (opcion) {
 			case 1:
-				System.out.println("Opción 1: Ver catálogo inverso");
+				System.out.println("Opción 1: Ver catálogo inverso\n");
 				acciones.mostrarCatalogoInverso();
 				break;
 			case 2:
-				System.out.println("Opcion 2: Actualiza Número de copias");
+				System.out.println("Opcion 2: Actualiza Número de copias\n");
 				HashMap<Integer, Integer> hashMap = new HashMap<>();
 				hashMap.put(1325, 5);
 				hashMap.put(1725, 3);
-				hashMap.put(12345, 10);
+				hashMap.put(12345, 11);
 				hashMap.put(12453, 8);
 				acciones.actualizaNumeroCopias(hashMap);
+				acciones.mostrarCatalogoInverso();
 				break;
 			case 3:
-				System.out.println("Opcion 3: Rellenar precio");
-				acciones.rellenaPrecio(0.05f);
+				System.out.println("Opcion 3: Rellenar precio\n");
+				acciones.rellenaPrecio(0.06f);
+				acciones.mostrarCatalogoInverso();
 				break;
 			case 4:
-				System.out.println("Opcion 4: Recuperar campos de la tabla de libros");
+				System.out.println("Opcion 4: Recuperar campos de la tabla de libros\n");
 				acciones.recuperaCampos();
 				break;
 			case 5:
 				System.out.println("Opcion 5: Aplicar descuento\n");
-				acciones.aplicaDescuento(0.85f);
+				acciones.aplicaDescuento(0.80f);
+				acciones.mostrarCatalogoInverso();
 				break;
 
 			default:
-				System.out.println("\nDebes elegir una opcion entre las disponibles");
+				System.out.println("\nDebes elegir una opcion entre las disponibles\n");
 				break;
 			}
 		} catch (InputMismatchException e) {

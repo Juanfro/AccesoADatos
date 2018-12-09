@@ -41,6 +41,7 @@ public class AccionesLibreria {
 						+ " | Editorial: " + result.getString("editorial") + " | ISBN: " + result.getInt("isbn")
 						+ " | Copias: " + result.getInt("copias") + " | Número de páginas: " + result.getInt("paginas")
 						+ " | Precio: " + result.getFloat("precio"));
+				System.out.print("\n*********");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -55,7 +56,7 @@ public class AccionesLibreria {
 	 * creando una sentencia preparada a partir de la consulta del apartado anterior
 	 * utilizando el tipo de ResultSet adecuado.
 	 */
-	@SuppressWarnings("unused")
+
 	void actualizaNumeroCopias(HashMap<Integer, Integer> hashMap) {
 		// UPDATE 'libros' SET 'copias'=? WHERE 'libros'.'isbn'=?
 		try {
@@ -66,11 +67,15 @@ public class AccionesLibreria {
 
 			while (resultSet.next()) {
 				int numCopias = hashMap.get(resultSet.getInt("isbn"));
-				preparedStatement.setInt(1, hashMap.get(resultSet.getInt("isbn")));
-				int isbn = resultSet.getInt("isbn");
-				preparedStatement.setInt(2, resultSet.getInt("isbn"));
+				// preparedStatement.setInt(1, hashMap.get(resultSet.getInt("isbn")));
+				preparedStatement.setInt(1, numCopias);// 'copias'=?
 
-				int rowsAffected = preparedStatement.executeUpdate();
+				int isbn = resultSet.getInt("isbn");
+				// preparedStatement.setInt(2, resultSet.getInt("isbn"));//
+				preparedStatement.setInt(2, isbn);// WHERE 'libros'.'isbn'=?
+
+				// int rowsAffected = preparedStatement.executeUpdate();
+				preparedStatement.executeUpdate();
 			}
 
 		} catch (SQLException e) {
@@ -88,6 +93,10 @@ public class AccionesLibreria {
 	void rellenaPrecio(float precioPagina) {
 
 		try {
+
+			connection.setAutoCommit(false);
+			// System.out.println(connection.getAutoCommit());
+
 			PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PRECIO);
 			// "UPDATE libros SET precio =? WHERE libros.isbn=?"
 
@@ -96,13 +105,18 @@ public class AccionesLibreria {
 
 			while (resultSet.next()) {
 				float precioLibro = resultSet.getInt("paginas") * precioPagina;
+				System.out.println("DEBUG: " + resultSet.getString("titulo") + "= " + precioLibro);
+
 				int isbn = resultSet.getInt("isbn");
 				preparedStatement.setFloat(1, precioLibro);
 				preparedStatement.setInt(2, isbn);
 
-				int rowsAffected = preparedStatement.executeUpdate();
+				// int rowsAffected = preparedStatement.executeUpdate();
+				preparedStatement.executeUpdate();
 
 			}
+
+			connection.commit();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -117,15 +131,22 @@ public class AccionesLibreria {
 	void recuperaCampos() {
 		try {
 			DatabaseMetaData databaseMetaData = connection.getMetaData();
-			ResultSet resultSet = databaseMetaData.getColumns(null, null, "libros", null);
+			ResultSet resultSet = databaseMetaData.getColumns("libreria", null, "libros", null);
 
 			while (resultSet.next()) {
 				String nombreColumna = resultSet.getString(4);
 				String tipoColumna = resultSet.getString(5);
 
+				String catalog = resultSet.getString(1);
+				String schema = resultSet.getString(2);
+				String tableName = resultSet.getString(3);
+
 				System.out.println("Atributo: " + nombreColumna + " | Tipo: " + tipoColumna);
+				// System.out.println("Catalog: " + catalog + " | schema: " + schema + " |
+				// tableName: " + tableName);
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -151,7 +172,8 @@ public class AccionesLibreria {
 				preparedStatement.setFloat(1, precioDescuento);
 				preparedStatement.setFloat(2, isbn);
 
-				int rowsAffected = preparedStatement.executeUpdate();
+				// int rowsAffected = preparedStatement.executeUpdate();
+				preparedStatement.executeUpdate();
 
 			}
 
