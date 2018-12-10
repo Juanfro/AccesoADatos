@@ -4,8 +4,8 @@
 	<entry key="dbms"></entry>
 	<entry key="driver"></entry>
 	<entry key="database_name"></entry>
-	<entry key=""></entry>
-	<entry key=""></entry>
+	<entry key="collection"></entry>
+	<entry key="user_name"></entry>
 	<entry key=""></entry>
 	<entry key="port_number"></entry>
 	<entry key="playerdao"></entry>
