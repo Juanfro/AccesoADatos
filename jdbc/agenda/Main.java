@@ -2,7 +2,7 @@ package agenda;
 
 /**
  * Aplicacion que permite realizar operaciones de inserción y consulta sobre los
- * registros de una agenda de contacttos almacenada en la base de datos.<br>
+ * registros de una agenda de contactos almacenada en la base de datos.<br>
  * La tabla de contactos tiene los siguientes campos:
  * <ul>
  * <li>Cod_contacto -> Int(11)(Clave primaria)</li>
