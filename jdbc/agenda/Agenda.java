@@ -40,8 +40,6 @@ public class Agenda {
 	static AccionesAgenda acciones;
 	static DBConnection instanciaConexion;
 
-	
-
 	public static void main(String[] args) {
 		Agenda myAgenda = new Agenda();
 
@@ -75,10 +73,10 @@ public class Agenda {
 				acciones.guardarContacto();
 				break;
 			case 2:
-
+				acciones.mostrarDatosContacto();
 				break;
 			case 3:
-
+				acciones.prefijo(99);
 				break;
 
 			default:
