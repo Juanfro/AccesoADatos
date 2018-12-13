@@ -33,9 +33,9 @@ class AccionesAgenda {
 
 		System.out.println("Codigo del contacto:");
 		codContacto = scGuardar.nextInt();
-
+		scGuardar.nextLine();//Consumir NewLine
 		System.out.println("Nombre del Contacto:");
-		nombre = scGuardar.next();
+		nombre = scGuardar.nextLine();
 
 		System.out.println("Telefono del contacto:");
 		telefono = Long.valueOf(scGuardar.nextInt());
