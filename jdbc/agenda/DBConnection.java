@@ -33,7 +33,7 @@ class DBConnection {
 	 * Patron Singleton para conexión. Si ya hay una conexión disponible la
 	 * devuelve, si no la hay o si está cerrada crea una nueva.
 	 * 
-	 * @return Conexión a la base de datos
+	 * @return Instancia de DBConnection con Conexión a la base de datos
 	 * @throws SQLException
 	 */
 	public static DBConnection getInstancia() throws SQLException {
@@ -46,6 +46,11 @@ class DBConnection {
 		return instancia;
 	}
 
+	/**
+	 * Getter de la conexión
+	 * 
+	 * @return conexión a la base de datos
+	 */
 	public Connection getConnection() {
 		return cnx;
 	}
