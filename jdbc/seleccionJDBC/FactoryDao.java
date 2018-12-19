@@ -12,15 +12,26 @@ public class FactoryDao {
 
 	private static FactoryDao instance;
 	Properties daoProps;
+	/**
+	 * Tipo de DAO que se va a utilizar
+	 */
 	String playerDao;
 	String configFile = "jdbc/seleccionJDBC/properties.xml";
 
 	DaoSeleccion<JugadorJDBC> daoSeleccion;
 
+	/**
+	 * Constructor privado
+	 */
 	private FactoryDao() {
 		setDaoType(configFile);
 	}
 
+	/**
+	 * Método singleton. devuelve una sola instancia de FactoryDao
+	 * 
+	 * @return instancia de FactoryDao
+	 */
 	public static FactoryDao getInstance() {
 		if (instance == null) {
 			instance = new FactoryDao();
@@ -28,6 +39,12 @@ public class FactoryDao {
 		return instance;
 	}
 
+	/**
+	 * Determina el tipo de DAO que se va a utilizar partiendo de un parámetro en un
+	 * fichero XML
+	 * 
+	 * @param configFile Fichero XML de configuración
+	 */
 	private void setDaoType(String configFile) {
 		daoProps = new Properties();
 		try {
@@ -47,9 +64,10 @@ public class FactoryDao {
 	}
 
 	/**
-	 * Lee
+	 * Lee el parametro playerDao y devuelve el DAO correspondiente
 	 * 
-	 * @return
+	 * @return DAO a uilizar
+	 *
 	 */
 	public DaoSeleccion<JugadorJDBC> getDao() {
 

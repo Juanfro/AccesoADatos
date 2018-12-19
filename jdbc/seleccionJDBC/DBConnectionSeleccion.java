@@ -19,7 +19,7 @@ public class DBConnectionSeleccion {
 	private DBConnectionSeleccion(Map<String, String> config) throws SQLException {
 
 		try {
-			//Class.forName("com.mysql.jdbc.Driver");
+			// Class.forName("com.mysql.jdbc.Driver");
 
 			String dbms = config.get("dbms");
 			String dbName = config.get("dbName");
@@ -42,6 +42,13 @@ public class DBConnectionSeleccion {
 		return cnx;
 	}
 
+	/**
+	 * Método singleton.
+	 * 
+	 * @param config
+	 * @return Instancia de DBConnectionSeleccion
+	 * @throws SQLException
+	 */
 	public static DBConnectionSeleccion getInstance(Map<String, String> config) throws SQLException {
 
 		if (instance == null) {

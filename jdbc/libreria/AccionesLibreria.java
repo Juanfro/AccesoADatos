@@ -105,7 +105,8 @@ public class AccionesLibreria {
 
 			while (resultSet.next()) {
 				float precioLibro = resultSet.getInt("paginas") * precioPagina;
-				System.out.println("DEBUG: " + resultSet.getString("titulo") + "= " + precioLibro);
+				// System.out.println("DEBUG: " + resultSet.getString("titulo") + "= " +
+				// precioLibro);
 
 				int isbn = resultSet.getInt("isbn");
 				preparedStatement.setFloat(1, precioLibro);
@@ -137,9 +138,9 @@ public class AccionesLibreria {
 				String nombreColumna = resultSet.getString(4);
 				String tipoColumna = resultSet.getString(5);
 
-				String catalog = resultSet.getString(1);
-				String schema = resultSet.getString(2);
-				String tableName = resultSet.getString(3);
+				// String catalog = resultSet.getString(1);
+				// String schema = resultSet.getString(2);
+				// String tableName = resultSet.getString(3);
 
 				System.out.println("Atributo: " + nombreColumna + " | Tipo: " + tipoColumna);
 				// System.out.println("Catalog: " + catalog + " | schema: " + schema + " |

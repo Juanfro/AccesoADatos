@@ -42,7 +42,9 @@ public class SeleccionJDBCMain {
 
 	static boolean fin;
 	static SeleccionJDBCMain seleccion;
-
+	/**
+	 * Clase que implementa la interfaz DaoSeleccion
+	 */
 	private static DaoSeleccion<JugadorJDBC> jugadorDao;
 
 	public static void main(String[] args) {
@@ -192,8 +194,8 @@ public class SeleccionJDBCMain {
 	}
 
 	private void fin() {
-		fin=true;
-		
+		fin = true;
+
 		listadoJugadores();
 		System.out.println("A por ellos OEOEOE!!");
 

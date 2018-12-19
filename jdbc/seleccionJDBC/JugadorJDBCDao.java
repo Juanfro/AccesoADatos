@@ -42,7 +42,6 @@ public class JugadorJDBCDao implements DaoSeleccion<JugadorJDBC> {
 		int dorsal;
 		String nombre;
 		PositionJDBC posicion;
-		;
 
 		try {
 			Statement statement = con.createStatement();
