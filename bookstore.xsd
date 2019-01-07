@@ -1,0 +1,46 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="catalog">
+        <xsd:complexType>
+            <xsd:all>
+                <xsd:element name="year" type="xsd:integer"/>
+                <xsd:element name="editorial" type="xsd:string"/>
+                <xsd:element name="books">
+                    <xsd:complexType >
+                        <xsd:sequence>
+                            <xsd:element name="book" 
+                                         minOccurs="0" 
+                                         maxOccurs="unbounded">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="authors">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element name="author" type="xsd:string" minOccurs="1" maxOccurs="unbounded"/>
+                                                </xsd:sequence>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                        <xsd:element name="title">
+                                            <xsd:complexType>
+                                                <xsd:simpleContent>
+                                                    <xsd:extension base="xsd:string">
+                                                        <xsd:attribute name="lang" type="xsd:string" use="required"/>
+                                                    </xsd:extension>
+                                                </xsd:simpleContent>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                        <xsd:element name="genre" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                                        <xsd:element name="price" type="xsd:float" minOccurs="0" maxOccurs="1"/>
+                                        <xsd:element name="publish_date" type="xsd:date" minOccurs="0" maxOccurs="1"/>
+                                        <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="id" type="xsd:string"/>
+                                    <xsd:attribute name="cover" type="xsd:string" use="optional"/>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:all>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
