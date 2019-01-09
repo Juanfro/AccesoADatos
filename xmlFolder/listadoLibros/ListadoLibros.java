@@ -1,10 +1,16 @@
 package listadoLibros;
 
+import java.io.File;
 import java.io.IOException;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -41,15 +47,38 @@ import org.xml.sax.SAXException;
  */
 class ListadoLibros {
 
+	String fichero = "bookstore.xml";
+	String schemaName = "bookstore.xsd";
+
+	Document document;
+
 	public static void main(String[] args) {
 
-		String fichero = "bookstore.xml";
+		ListadoLibros listadoLibros = new ListadoLibros();
 
+		listadoLibros.listado();
+		try {
+			try {
+				listadoLibros.validation();
+				System.out.println("Valida");
+			} catch (SAXException | IOException e) {
+				System.out.println("Error");
+				System.out.println("No valida");
+				//e.printStackTrace();
+			}
+
+		} catch (IllegalArgumentException e) {
+			System.out.println("No valida - IllegalArgumentException");
+		}
+
+	}
+
+	void listado() {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		try {
 			DocumentBuilder builder = factory.newDocumentBuilder();
 
-			Document document = builder.parse(fichero);
+			document = builder.parse(fichero);
 			document.getDocumentElement().normalize();
 
 			// Element rootElement = document.getDocumentElement();
@@ -68,13 +97,36 @@ class ListadoLibros {
 				Node nNode = nodes.item(i);
 				System.out.println("LIBRO " + (i + 1));
 				// System.out.println(nNode.getNodeName());
-				Element eTitulo = (Element) nNode;
+				Element elementLibro = (Element) nNode;
 
-				System.out.println("Titulo: " + eTitulo.getElementsByTagName("title").item(0).getTextContent());
+				System.out.println("Titulo: " + elementLibro.getElementsByTagName("title").item(0).getTextContent());
+
+				System.out.println("Autor: " + elementLibro.getElementsByTagName("author").item(0).getTextContent());
+
+				NodeList genero = elementLibro.getElementsByTagName("genre");
+				if (genero.getLength() > 0) {
+					System.out
+							.println("Género: " + elementLibro.getElementsByTagName("genre").item(0).getTextContent());
+				}
+
+				System.out.println("Precio: " + elementLibro.getElementsByTagName("price").item(0).getTextContent());
+
+				NodeList fecha = elementLibro.getElementsByTagName("publish_date");
+				if (fecha.getLength() > 0) {
+					System.out.println("Fecha publicación: " + fecha.item(0).getTextContent());
+				}
+
+				NodeList description = elementLibro.getElementsByTagName("description");
+				if (description.getLength() > 0) {
+					System.out.println("Descripción: " + description.item(0).getTextContent());
+
+				}
+
+				System.out.println();
 
 			}
 
-			System.out.println("FIN");
+			// System.out.println("FIN");
 
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
@@ -85,6 +137,22 @@ class ListadoLibros {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	void validation() throws IllegalArgumentException, SAXException, IOException {
+		Schema schema = null;
+
+		try {
+			String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
+			SchemaFactory factory = SchemaFactory.newInstance(language);
+			schema = factory.newSchema(new File(schemaName));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		Validator validator = schema.newValidator();
+
+		validator.validate(new DOMSource(document));
 
 	}
 
