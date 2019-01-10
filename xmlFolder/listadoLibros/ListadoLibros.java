@@ -14,6 +14,7 @@ import javax.xml.validation.Validator;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
@@ -56,7 +57,10 @@ class ListadoLibros {
 
 		ListadoLibros listadoLibros = new ListadoLibros();
 
+		// Listado de libros
 		listadoLibros.listado();
+
+		// Validación
 		try {
 			try {
 				listadoLibros.validation();
@@ -64,7 +68,7 @@ class ListadoLibros {
 			} catch (SAXException | IOException e) {
 				System.out.println("Error");
 				System.out.println("No valida");
-				//e.printStackTrace();
+				e.printStackTrace();
 			}
 
 		} catch (IllegalArgumentException e) {
@@ -87,7 +91,7 @@ class ListadoLibros {
 
 			System.out.print("Elemento raiz: ");
 
-			System.out.println(document.getDocumentElement().getNodeName());
+			System.out.println(document.getDocumentElement().getNodeName() + "\n");
 
 			// LISTA de LIBROS
 
@@ -96,8 +100,14 @@ class ListadoLibros {
 			for (int i = 0; i < nodes.getLength(); i++) {
 				Node nNode = nodes.item(i);
 				System.out.println("LIBRO " + (i + 1));
+
 				// System.out.println(nNode.getNodeName());
 				Element elementLibro = (Element) nNode;
+
+				// ID
+				NamedNodeMap atributos = nNode.getAttributes();				
+				
+				System.out.println("ID: " + atributos.item(0).getTextContent());
 
 				System.out.println("Titulo: " + elementLibro.getElementsByTagName("title").item(0).getTextContent());
 
