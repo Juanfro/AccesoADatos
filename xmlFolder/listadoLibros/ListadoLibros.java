@@ -53,9 +53,9 @@ import org.xml.sax.SAXException;
  */
 class ListadoLibros {
 
-	String fichero = "bookstore.xml";
-	String schemaName = "bookstore.xsd";
-	String ficheroBinario = "libros.dat";
+	String fichero = "files/bookstore.xml";
+	String schemaName = "files/bookstore.xsd";
+	String ficheroBinario = "files/libros.dat";
 
 	Document document;
 
