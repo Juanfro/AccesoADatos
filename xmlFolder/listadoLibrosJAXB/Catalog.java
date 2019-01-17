@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name = "catalog")
-@XmlType(propOrder= {"editorial", "year", "books"})
+@XmlType(propOrder = { "editorial", "year", "books" })
 class Catalog {
-	private List<Libro> libros = new ArrayList<>();
+	private List<Libro> books = new ArrayList<>();
 	int year;
 	String editorial;
 
@@ -19,20 +19,21 @@ class Catalog {
 		// TODO Auto-generated constructor stub
 	}
 
-	@XmlElementWrapper(name = "books")
-	@XmlElement(name = "books")
-	List<Libro> getLibros() {
-		return libros;
+	List<Libro> getBooks() {
+		return books;
 	}
 
-	void setLibros(List<Libro> libros) {
-		this.libros = libros;
+	@XmlElementWrapper(name = "books")
+	@XmlElement(name = "book")
+	void setBooks(List<Libro> books) {
+		this.books = books;
 	}
 
 	int getYear() {
 		return year;
 	}
 
+	@XmlElement(name = "year")
 	void setYear(int year) {
 		this.year = year;
 	}
@@ -41,6 +42,7 @@ class Catalog {
 		return editorial;
 	}
 
+	@XmlElement(name = "editorial")
 	void setEditorial(String editorial) {
 		this.editorial = editorial;
 	}

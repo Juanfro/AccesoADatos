@@ -1,5 +1,7 @@
 package listadoLibrosJAXB;
 
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
@@ -9,18 +11,18 @@ import javax.xml.bind.annotation.XmlType;
 class Libro extends MarshalClass {
 
 	private String id;
-	private String autor;
-	private String titulo;
-	private String genero;
-	private Float precio;
-	private String fechaPublicacion;
-	private String descripcion;
+	private List<Author> authors;
+	private String title;
+	private String genre;
+	private Float price;
+	private String publish_date;
+	private String description;
 
 	public Libro() {
 		// TODO Auto-generated constructor stub
 	}
 
-	@XmlAttribute(name="id")
+	@XmlAttribute(name = "id")
 	String getId() {
 		return id;
 	}
@@ -29,52 +31,52 @@ class Libro extends MarshalClass {
 		this.id = id;
 	}
 
-	String getAutor() {
-		return autor;
+	public List<Author> getAuthors() {
+		return authors;
 	}
 
-	void setAutor(String autor) {
-		this.autor = autor;
+	public void setAuthors(List<Author> authors) {
+		this.authors = authors;
 	}
 
-	String getTitulo() {
-		return titulo;
+	public String getTitle() {
+		return title;
 	}
 
-	void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	String getGenero() {
-		return genero;
+	public String getGenre() {
+		return genre;
 	}
 
-	void setGenero(String genero) {
-		this.genero = genero;
+	public void setGenre(String genre) {
+		this.genre = genre;
 	}
 
-	Float getPrecio() {
-		return precio;
+	public Float getPrice() {
+		return price;
 	}
 
-	void setPrecio(Float precio) {
-		this.precio = precio;
+	public void setPrice(Float price) {
+		this.price = price;
 	}
 
-	String getFechaPublicacion() {
-		return fechaPublicacion;
+	public String getPublish_date() {
+		return publish_date;
 	}
 
-	void setFechaPublicacion(String fechaPublicacion) {
-		this.fechaPublicacion = fechaPublicacion;
+	public void setPublish_date(String publish_date) {
+		this.publish_date = publish_date;
 	}
 
-	String getDescripcion() {
-		return descripcion;
+	public String getDescription() {
+		return description;
 	}
 
-	void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

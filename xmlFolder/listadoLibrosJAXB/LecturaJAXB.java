@@ -15,7 +15,7 @@ class LecturaJAXB {
 			Unmarshaller unmarshaller = context.createUnmarshaller();
 			Catalog catalog = (Catalog) unmarshaller.unmarshal(new File("files/bookstore.xml"));
 			
-			System.out.println("Editorial:" + catalog.getEditorial());
+			System.out.println("Editorial:" + catalog.getEditorial().toString());
 		} catch (JAXBException e) {
 			e.printStackTrace();
 		}
