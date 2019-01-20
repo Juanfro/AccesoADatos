@@ -36,7 +36,6 @@ class LecturaJAXB {
 
 		Libro libroObjeto;
 		listaLibros = new ArrayList<>();
-		
 
 		String id;
 		// List<Author> authors;
