@@ -1,5 +1,6 @@
 package listadoLibrosJAXB;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAttribute;
@@ -10,7 +11,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name = "book")
 @XmlType(propOrder = { "id", "authors", "title", "genre", "price", "publish_date", "description" })
-class Libro extends MarshalClass {
+class Libro extends MarshalClass implements Serializable {
 
 	private String id;
 	private List<String> authors;
@@ -22,6 +23,18 @@ class Libro extends MarshalClass {
 
 	public Libro() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public Libro(String id, List<String> authors, String title, String genre, Float price, String publish_date,
+			String description) {
+
+		this.id = id;
+		this.authors = authors;
+		this.title = title;
+		this.genre = genre;
+		this.price = price;
+		this.publish_date = publish_date;
+		this.description = description;
 	}
 
 	@XmlAttribute(name = "id")
@@ -39,9 +52,9 @@ class Libro extends MarshalClass {
 
 	@XmlElementWrapper(name = "authors")
 	@XmlElement(name = "author")
-	/*public void setAuthors(List<Author> authors) {
-		this.authors = authors;
-	}*/
+	/*
+	 * public void setAuthors(List<Author> authors) { this.authors = authors; }
+	 */
 	public void setAuthors(List<String> authors) {
 		this.authors = authors;
 	}
