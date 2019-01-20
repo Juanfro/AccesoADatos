@@ -16,19 +16,20 @@ class Catalog {
 	String editorial;
 
 	public Catalog() {
-		// TODO Auto-generated constructor stub
+
 	}
 
-	List<Libro> getBooks() {
-		return books;
+	// EDITORIAL
+	String getEditorial() {
+		return editorial;
 	}
 
-	@XmlElementWrapper(name = "books")
-	@XmlElement(name = "book")
-	void setBooks(List<Libro> books) {
-		this.books = books;
+	@XmlElement(name = "editorial")
+	void setEditorial(String editorial) {
+		this.editorial = editorial;
 	}
 
+	// YEAR
 	int getYear() {
 		return year;
 	}
@@ -38,13 +39,15 @@ class Catalog {
 		this.year = year;
 	}
 
-	String getEditorial() {
-		return editorial;
+	// BOOKS
+	List<Libro> getBooks() {
+		return books;
 	}
 
-	@XmlElement(name = "editorial")
-	void setEditorial(String editorial) {
-		this.editorial = editorial;
+	@XmlElementWrapper(name = "books")
+	@XmlElement(name = "book")
+	void setBooks(List<Libro> books) {
+		this.books = books;
 	}
 
 }

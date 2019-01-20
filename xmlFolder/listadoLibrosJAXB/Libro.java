@@ -3,6 +3,8 @@ package listadoLibrosJAXB;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -11,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 class Libro extends MarshalClass {
 
 	private String id;
-	private List<Author> authors;
+	private List<String> authors;
 	private String title;
 	private String genre;
 	private Float price;
@@ -31,11 +33,16 @@ class Libro extends MarshalClass {
 		this.id = id;
 	}
 
-	public List<Author> getAuthors() {
+	public List<String> getAuthors() {
 		return authors;
 	}
 
-	public void setAuthors(List<Author> authors) {
+	@XmlElementWrapper(name = "authors")
+	@XmlElement(name = "author")
+	/*public void setAuthors(List<Author> authors) {
+		this.authors = authors;
+	}*/
+	public void setAuthors(List<String> authors) {
 		this.authors = authors;
 	}
 
