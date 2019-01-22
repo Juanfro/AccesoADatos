@@ -1,5 +1,6 @@
 package seleccionJAXB;
 
+import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -31,10 +32,16 @@ class SeleccionJAXBMain {
 
 	static boolean fin;
 	static SeleccionJAXBMain seleccion;
+	static Acciones acciones;
 
 	public static void main(String[] args) {
 		fin = false;
 		seleccion = new SeleccionJAXBMain();
+		try {
+			acciones = new Acciones();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 		while (!fin) {
 			seleccion.gestionar();
@@ -74,13 +81,17 @@ class SeleccionJAXBMain {
 		}
 	}
 
+	/**
+	 * Lee los jugadores de la selección de la base de datos y los exporta a un
+	 * fichero XML
+	 */
 	private void crearXML() {
-		// TODO Auto-generated method stub
-
+		System.out.println("Crear XML");
+		acciones.DBtoXML();
 	}
 
 	private void leerXML() {
-		// TODO Auto-generated method stub
+		System.out.println("Leer XML");
 
 	}
 
