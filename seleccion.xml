@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<seleccion>
+    <jugadores>
+        <jugador>
+            <dorsal>0</dorsal>
+            <nombre>Entrenador</nombre>
+            <posicion>DEFENSA</posicion>
+        </jugador>
+        <jugador>
+            <dorsal>1</dorsal>
+            <nombre>Defensa Defensez</nombre>
+            <posicion>DEFENSA</posicion>
+        </jugador>
+        <jugador>
+            <dorsal>2</dorsal>
+            <nombre>Medio Mediez</nombre>
+            <posicion>MEDIO</posicion>
+        </jugador>
+        <jugador>
+            <dorsal>3</dorsal>
+            <nombre>Portero porterez</nombre>
+            <posicion>PORTERO</posicion>
+        </jugador>
+        <jugador>
+            <dorsal>4</dorsal>
+            <nombre>Delantero Delanterez</nombre>
+            <posicion>DELANTERO</posicion>
+        </jugador>
+        <jugador>
+            <dorsal>5</dorsal>
+            <nombre>Defensor Defensoso</nombre>
+            <posicion>DEFENSA</posicion>
+        </jugador>
+        <jugador>
+            <dorsal>7</dorsal>
+            <nombre>Juagdor Siete</nombre>
+            <posicion>MEDIO</posicion>
+        </jugador>
+        <jugador>
+            <dorsal>10</dorsal>
+            <nombre>Jugador 10</nombre>
+            <posicion>DELANTERO</posicion>
+        </jugador>
+    </jugadores>
+</seleccion>

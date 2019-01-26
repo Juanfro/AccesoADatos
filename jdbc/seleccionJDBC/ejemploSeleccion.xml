@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<seleccion>
+	<jugadores>
+		<jugador>
+			<dorsal></dorsal>
+			<nombre></nombre>
+			<posicion></posicion>
+		</jugador>
+		<jugador>
+			<dorsal></dorsal>
+			<nombre></nombre>
+			<posicion></posicion>
+		</jugador>
+		<jugador>
+			<dorsal></dorsal>
+			<nombre></nombre>
+			<posicion></posicion>
+		</jugador>
+		<jugador>
+			<dorsal></dorsal>
+			<nombre></nombre>
+			<posicion></posicion>
+		</jugador>
+	</jugadores>
+</seleccion>
