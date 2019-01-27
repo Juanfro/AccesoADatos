@@ -90,8 +90,15 @@ class SeleccionJAXBMain {
 		acciones.DBtoXML();
 	}
 
+	/**
+	 * Utiliza los datos de un fichero XML con jugadores para incorporar nuevos
+	 * jugadores a la selección en la BBDD. Los datos provenientes del fichero XML
+	 * van a sobrescribir los jugadores de la base de datos que tengan el mismo
+	 * dorsal
+	 */
 	private void leerXML() {
 		System.out.println("Leer XML");
+		acciones.XMLtoDB();
 
 	}
 

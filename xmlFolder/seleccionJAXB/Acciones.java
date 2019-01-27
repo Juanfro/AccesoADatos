@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,6 +20,7 @@ import java.util.Properties;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 
 import seleccionJAXB.JugadorJAXB.PositionJAXB;
 import seleccionJDBC.JugadorJDBC.PositionJDBC;
@@ -118,6 +120,61 @@ class Acciones {
 	}
 
 	void XMLtoDB() {
+
+		System.out.println("XML to DB");
+
+		List<JugadorJAXB> jugadores;
+
+		final String INSERT_JUGADOR = "INSERT INTO jugador (dorsal, nombre, posicion) VALUES (?, ?, ?)";
+		final String UPDATE_JUGADOR = "UPDATE jugador SET dorsal = ?, nombre = ?, posicion = ? WHERE jugador.dorsal = ?";
+		final String SELECT_BY_DORSAL = "SELECT * from jugador WHERE jugador.dorsal = ?";
+
+		try {
+			JAXBContext context = JAXBContext.newInstance(SeleccionJAXB.class);
+			Unmarshaller unmarshaller = context.createUnmarshaller();
+			SeleccionJAXB seleccionJAXB = (SeleccionJAXB) unmarshaller.unmarshal(new File("seleccion.xml"));
+			System.out.println(seleccionJAXB.getJugadores().toString());
+
+			jugadores = seleccionJAXB.getJugadores(); // Lista de jugadores del XML
+
+			for (JugadorJAXB jugador : jugadores) {
+
+				dorsal = jugador.getDorsal();
+				nombre = jugador.getNombre();
+				posicion = jugador.getPosition();
+
+				// jugadorJAXB = new JugadorJAXB(dorsal, nombre, posicion);
+
+				// SELECT * from jugador WHERE jugador.dorsal = ?
+				PreparedStatement preparedStatement = con.prepareStatement(SELECT_BY_DORSAL);
+				preparedStatement.setInt(1, dorsal);
+				ResultSet resultSet = preparedStatement.executeQuery();
+
+				if (!resultSet.next()) { // Jugador no existe -> INSERTAR
+					System.out.println("Jugador no existe. Insertando");
+
+					PreparedStatement preparedInsert = con.prepareStatement(INSERT_JUGADOR);
+					preparedInsert.setInt(1, dorsal);
+					preparedInsert.setString(2, nombre);
+					preparedInsert.setString(3, posicion.toString().toUpperCase());
+					preparedInsert.executeUpdate();
+
+				} else { // Jugador si Existe ->ACTUALIZAR
+					System.out.println("Jugador existe. Actualizando");
+					PreparedStatement preparedUpdate = con.prepareStatement(UPDATE_JUGADOR);
+					preparedUpdate.setInt(1, dorsal);
+					preparedUpdate.setString(2, nombre);
+					preparedUpdate.setString(3, posicion.toString().toUpperCase());
+					preparedUpdate.setInt(4, dorsal);
+					preparedUpdate.executeUpdate();
+				}
+			}
+
+		} catch (JAXBException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 	}
 
