@@ -1,0 +1,5 @@
+package seleccionEXISTDB;
+
+class XMLConnection {
+
+}

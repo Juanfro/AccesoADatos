@@ -1,6 +1,20 @@
 package seleccionEXISTDB;
 
 /**
+ * <p1>Escribe un programa que realice la misma funcionalidad que el ejercicio
+ * del mismo nombre en la batería de programas anterior, pero utilizando una
+ * base de datos XML nativa como mecanismo de persistencia (eXist).
+ * </p>
+ * 
+ * <ul>
+ * <li>Diseño clases del patrón DAO</li>
+ * <li>Manejo de excepciones</li>
+ * <li>Uso de fichero externo de configuración</li>
+ * <li>Uso de patrón factoría</li>
+ * </ul>
+ * 
+ * 
+ * 
  * <h1>Seleccion</h1> Escribe un programa Java que ayude a Luis Enrique a
  * conformar su lista de seleccionados para el siguiente partido del combinado
  * nacional. <br>
@@ -15,6 +29,7 @@ package seleccionEXISTDB;
  * serializar y se vuelcan de nuevo al fichero.<br>
  * Es importante tener en cuenta que solamente se lee y se graban los datos al
  * fichero de jugadores cuando se inicia y finaliza la ejecución del programa.
+ * 
  * @author Juan Antonio Rodríguez
  *
  */
