@@ -35,4 +35,8 @@ package seleccionEXISTDB;
  */
 class SeleccionMain {
 
+	public static void main(String[] args) throws Exception {
+		
+	}
+
 }
