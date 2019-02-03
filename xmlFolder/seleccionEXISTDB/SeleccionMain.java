@@ -1,5 +1,8 @@
 package seleccionEXISTDB;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 /**
  * <p1>Escribe un programa que realice la misma funcionalidad que el ejercicio
  * del mismo nombre en la batería de programas anterior, pero utilizando una
@@ -35,8 +38,82 @@ package seleccionEXISTDB;
  */
 class SeleccionMain {
 
+	private static boolean fin;
+	private static SeleccionMain seleccion;
+
+	private static DaoSeleccion<JugadorXML> jugadorDao;
+
 	public static void main(String[] args) throws Exception {
-		
+		fin = false;
+
+		seleccion.bienVenido();
+		while (!fin) {
+			seleccion.gestionar();
+		}
+
+	}
+
+	private void bienVenido() {
+		System.out.println("Bienvenido Seleccionador");
+		listadoJugadores();
+	}
+
+	private void listadoJugadores() {
+		System.out.println("Listado Jugadores"); // TODO
+
+	}
+
+	private void gestionar() {
+
+		listadoJugadores();
+
+		System.out.println("\nElige una operación a realizar:");
+		System.out.println("1. Añadir Jugador");
+		System.out.println("2. Borrar Jugador");
+		System.out.println("3. Salir");
+
+		try {
+			Scanner sc = new Scanner(System.in);
+			int option = sc.nextInt();
+
+			switch (option) {
+			case 1:
+				addPlayer();// Añadir jugador
+				break;
+
+			case 2:
+				deletePlayer();// Borrar Jugador
+				break;
+
+			case 3:
+				fin();// Salir
+				break;
+
+			default:
+				System.out.println("\nOpcion inválida");
+				gestionar();
+				break;
+			}
+		} catch (InputMismatchException e) {
+			System.out.println("\nOpcion inválida. Debes escribir un número");
+			gestionar();
+		}
+
+	}
+
+	private void addPlayer() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void deletePlayer() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void fin() {
+		// TODO Auto-generated method stub
+
 	}
 
 }
