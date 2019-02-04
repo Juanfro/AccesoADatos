@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<catalog>
+	<editorial>Garceta</editorial>
+	<year>2018</year>
+	<books>
+		<book id="bk101">
+			<authors>
+				<author>Gambardella, Matthew</author>
+			</authors>
+			<title lang="en">XML Developer's Guide</title>
+			<genre>Computer</genre>
+			<price>44.95</price>
+			<publish_date>2000-10-01</publish_date>
+			<description>An in-depth look at creating applications with XML.
+			</description>
+		</book>
+		<book id="bk102">
+			<authors>
+				<author>Giada De Laurentiis</author>
+			</authors>
+			<title lang="en">Everyday Italian</title>
+			<genre>Cooking</genre>
+			<price>30.00</price>
+			<publish_date>2005-01-11</publish_date>
+			<description>Great recopilation of italian recipes</description>
+		</book>
+		<book id="bk103">
+			<authors>
+				<author>J K. Rowling</author>
+			</authors>
+			<title lang="es">Harry Potter</title>
+			<genre>Children</genre>
+			<price>29.99</price>
+			<publish_date>1998-07-18</publish_date>
+			<description>Magician apprentice advantures</description>
+		</book>
+		<book id="bk104">
+			<authors>
+				<author>James McGovern</author>
+				<author>Per Bothner</author>
+				<author>Kurt Cagle</author>
+				<author>James Linn</author>
+				<author>Vaidyanathan Nagarajan</author>
+			</authors>
+			<title lang="en">XQuery Kick Start</title>
+			<price>49.99</price>
+			<publish_date>2002-09-02</publish_date>
+			<description>Xquery expert manual</description>
+		</book>
+		<book cover="paperback" id="bk105">
+			<authors>
+				<author>Erik T. Ray</author>
+			</authors>
+			<title lang="en">Learning XML</title>
+			<price>39.95</price>
+		</book>
+	</books>
+</catalog>

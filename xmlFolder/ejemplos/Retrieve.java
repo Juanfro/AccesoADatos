@@ -30,11 +30,12 @@ public class Retrieve {
 	}
 
 	public static void main(String args[]) throws Exception {
-		if (args.length < 2) {
-			usage();
-		}
+		/*
+		 * if (args.length < 2) { usage(); }
+		 */
 
-		String collection = args[0];
+		// String collection = args[0];
+		String collection = "prueba";
 
 		// initialize database drivers
 		Class<?> cl = Class.forName(driver);
@@ -51,7 +52,7 @@ public class Retrieve {
 		col.setProperty(OutputKeys.INDENT, "yes");
 		col.setProperty(EXistOutputKeys.EXPAND_XINCLUDES, "no");
 		col.setProperty(EXistOutputKeys.PROCESS_XSL_PI, "yes");
-		XMLResource res = (XMLResource) col.getResource(args[1]);
+		XMLResource res = (XMLResource) col.getResource("bookstore.xml");
 		if (res == null)
 			System.out.println("document not found!");
 		else {
