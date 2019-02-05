@@ -42,7 +42,7 @@ public class Put {
 		DatabaseManager.registerDatabase(database);
 
 		// try to get collection
-		Collection col = DatabaseManager.getCollection(URI + collection);
+		Collection col = DatabaseManager.getCollection(URI + "db/" + collection, "admin", "admin");
 		if (col == null) {
 			// collection does not exist: get root collection and create.
 			// for simplicity, we assume that the new collection is a
