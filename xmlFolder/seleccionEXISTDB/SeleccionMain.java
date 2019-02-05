@@ -45,6 +45,7 @@ class SeleccionMain {
 
 	public static void main(String[] args) throws Exception {
 		fin = false;
+		seleccion = new SeleccionMain();
 
 		seleccion.bienVenido();
 		while (!fin) {
@@ -60,6 +61,9 @@ class SeleccionMain {
 
 	private void listadoJugadores() {
 		System.out.println("Listado Jugadores"); // TODO
+		
+		JugadorXMLDao dao = new JugadorXMLDao();
+		dao.getAll();
 
 	}
 

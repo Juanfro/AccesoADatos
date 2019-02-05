@@ -27,9 +27,11 @@ public class RetrieveExample {
 		XMLResource res = null;
 		try {
 			// get the collection
-			col = DatabaseManager.getCollection(URI + args[0]);
+			//col = DatabaseManager.getCollection(URI + args[0]);
+			col = DatabaseManager.getCollection(URI + "db/seleccion");
 			col.setProperty(OutputKeys.INDENT, "no");
-			res = (XMLResource) col.getResource(args[1]);
+			//res = (XMLResource) col.getResource(args[1]);
+			res = (XMLResource) col.getResource("seleccion.xml");
 
 			if (res == null) {
 				System.out.println("document not found!");

@@ -1,6 +1,9 @@
 package nationalTeam;
 
-import com.sun.java.util.jar.pack.Attribute.Layout.Element;
+import org.xmldb.api.base.XMLDBException;
+import org.xmldb.api.modules.XUpdateQueryService;
+
+//import com.sun.java.util.jar.pack.Attribute.Layout.Element;
 
 public class PlayerXMLDAO implements DAOint<Player, Integer> {
 
@@ -59,6 +62,20 @@ public class PlayerXMLDAO implements DAOint<Player, Integer> {
 				+ "</xupdate:append>"//
 				+ "</xupdate:modifications>";
 			
+/*
+<xupdate:modifications version="1.0" xmlns:xupdate="http://www.xmldb.org/xupdate">
+	<xupdate:append select="national_team/players">
+		<xupdate:Element name ="player">
+			<number>15</number>
+			<name>JugadorXML</name>
+			<surname>Apellido</surname>
+			<position>DELANTERO</position>
+		</xupdate:Element>
+	</xupdate:append>
+</xupdate:modifications>
+* 
+*/
+
 			XUpdateQueryService xuqService =
 					(XUpdateQueryService)
 			
