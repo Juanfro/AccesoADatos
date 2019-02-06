@@ -3,6 +3,8 @@ package seleccionEXISTDB;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import seleccionEXISTDB.JugadorXML.PositionJDBC;
+
 /**
  * <p1>Escribe un programa que realice la misma funcionalidad que el ejercicio
  * del mismo nombre en la batería de programas anterior, pero utilizando una
@@ -56,12 +58,12 @@ class SeleccionMain {
 
 	private void bienVenido() {
 		System.out.println("Bienvenido Seleccionador");
-		listadoJugadores();
+		//listadoJugadores();
 	}
 
 	private void listadoJugadores() {
 		System.out.println("Listado Jugadores"); // TODO
-		
+
 		JugadorXMLDao dao = new JugadorXMLDao();
 		dao.getAll();
 
@@ -106,7 +108,13 @@ class SeleccionMain {
 	}
 
 	private void addPlayer() {
-		// TODO Auto-generated method stub
+		
+		System.out.println("\nAñadir jugador\n");
+		JugadorXML jugador = new JugadorXML(15, "Jugador15", PositionJDBC.DELANTERO);
+
+		JugadorXMLDao dao = new JugadorXMLDao();
+
+		dao.save(jugador);
 
 	}
 
