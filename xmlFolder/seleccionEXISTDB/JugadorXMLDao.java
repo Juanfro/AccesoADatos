@@ -72,7 +72,7 @@ class JugadorXMLDao implements DaoSeleccion<JugadorXML> {
 			String xupdate //
 					= "<xupdate:modifications version=\"1.0\" "//
 							+ "xmlns:xupdate=\"http://www.xmldb.org/xupdate\">"//
-							+ "<xupdate:append select=\"/jugadores\">"//
+							+ "<xupdate:append select=\"/seleccion/jugadores\">"//
 							+ "<xupdate:element name =\"jugador\">"//
 							+ "<dorsal>" + j.getDorsal() + "</dorsal>"//
 							+ "<nombre>" + j.getNombre() + "</nombre>"//
@@ -92,7 +92,8 @@ class JugadorXMLDao implements DaoSeleccion<JugadorXML> {
 			XUpdateQueryService service = (XUpdateQueryService) col.getService("XUpdateQueryService", "1.0");
 			service.setProperty("indent", "yes");
 			// ResourceSet result = service.query(xupdate);
-			long modificaciones = service.update(xupdate);
+			// long modificaciones = service.update(xupdate);
+			long modificaciones = service.updateResource("seleccion.xml", xupdate);
 			System.out.println(modificaciones + " Modificaciones procesadas\n");
 
 		} catch (XMLDBException e) {
