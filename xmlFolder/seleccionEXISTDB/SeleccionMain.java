@@ -119,7 +119,12 @@ class SeleccionMain {
 	}
 
 	private void deletePlayer() {
-		// TODO Auto-generated method stub
+		System.out.println("\nBorrar jugador\n");
+		
+		JugadorXMLDao dao = new JugadorXMLDao();
+		dao.delete(10);
+		
+		
 
 	}
 
