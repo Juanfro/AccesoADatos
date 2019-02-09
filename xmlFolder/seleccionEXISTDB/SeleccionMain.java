@@ -58,7 +58,7 @@ class SeleccionMain {
 
 	private void bienVenido() {
 		System.out.println("Bienvenido Seleccionador");
-		//listadoJugadores();
+		// listadoJugadores();
 	}
 
 	private void listadoJugadores() {
@@ -108,7 +108,7 @@ class SeleccionMain {
 	}
 
 	private void addPlayer() {
-		
+
 		System.out.println("\nAñadir jugador\n");
 		JugadorXML jugador = new JugadorXML(15, "Jugador15", PositionJDBC.DELANTERO);
 
@@ -120,16 +120,14 @@ class SeleccionMain {
 
 	private void deletePlayer() {
 		System.out.println("\nBorrar jugador\n");
-		
+
 		JugadorXMLDao dao = new JugadorXMLDao();
 		dao.delete(10);
-		
-		
 
 	}
 
 	private void fin() {
-		// TODO Auto-generated method stub
+		fin= true;
 
 	}
 

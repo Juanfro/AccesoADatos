@@ -22,6 +22,7 @@ class JugadorXMLDao implements DaoSeleccion<JugadorXML> {
 
 	@Override
 	public List<JugadorXML> getAll() {
+		int cont = 0;
 
 		try {
 
@@ -32,17 +33,43 @@ class JugadorXMLDao implements DaoSeleccion<JugadorXML> {
 			Collection col = DatabaseManager.getCollection("xmldb:exist://localhost:8080/exist/xmlrpc/db/seleccion",
 					"admin", "admin");
 
-			String query = //
-					"for $jugador in /seleccion/jugadores/jugador\r\n" + //
-							"return $jugador/nombre//text()";
+			String queryNombre = "for $jugador in /seleccion/jugadores/jugador\r\n"
+					+ "return ( $jugador/dorsal//text(), $jugador/nombre//text(), $jugador/posicion//text()) ";
+
+			// String queryNombre = //
+			// "for $jugador in /seleccion/jugadores/jugador\r\n" + //
+			// "return $jugador/nombre//text() ";
+
+			String queryDorsal = "for $jugador in /seleccion/jugadores/jugador\r\n" + "return $jugador/dorsal//text()";
+
+			String queryPosicion = "for $jugador in /seleccion/jugadores/jugador\r\n"
+					+ "return $jugador/posicion//text()";
+
 			XQueryService service = (XQueryService) col.getService("XQueryService", "1.0");
 			service.setProperty("indent", "yes");
-			ResourceSet result = service.query(query);
+			ResourceSet result = service.query(queryNombre);
 			ResourceIterator i = result.getIterator();
 			while (i.hasMoreResources()) {
+
 				Resource r = i.nextResource();
 				String value = (String) r.getContent();
-				System.out.println(value);
+
+				switch (cont) {
+				case 0:
+					System.out.print("Dorsal: " + value);
+					break;
+				case 1:
+					System.out.print(" | Nombre: " + value);
+					break;
+				case 2:
+					System.out.println(" | Posicion: " + value);
+					break;
+
+				default:
+					break;
+				}
+				// System.out.println(value);
+				cont = (cont + 1) % 3;
 			}
 
 		} catch (XMLDBException e) {
@@ -110,16 +137,6 @@ class JugadorXMLDao implements DaoSeleccion<JugadorXML> {
 			DatabaseManager.registerDatabase(database);
 			Collection col = DatabaseManager.getCollection("xmldb:exist://localhost:8080/exist/xmlrpc/db/seleccion",
 					"admin", "admin");
-
-			/*
-			 * String xupdate // = "<xupdate:modifications version=\"1.0\" "// +
-			 * "xmlns:xupdate=\"http://www.xmldb.org/xupdate\">"// +
-			 * "<xupdate:append select=\"/seleccion/jugadores\">"// +
-			 * "<xupdate:element name =\"jugador\">"// + "<dorsal>" + j.getDorsal() +
-			 * "</dorsal>"// + "<nombre>" + j.getNombre() + "</nombre>"// + "<posicion>" +
-			 * j.getPosition().name() + "</posicion>"// + "</xupdate:element>"// +
-			 * "</xupdate:append>"// + "</xupdate:modifications>";
-			 */
 
 			String xUpdateDelete = "" + "<xupdate:modifications version=\"1.0\" "//
 					+ "xmlns:xupdate=\"http://www.xmldb.org/xupdate\">"//
