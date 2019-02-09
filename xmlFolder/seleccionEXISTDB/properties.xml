@@ -2,7 +2,7 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	<comment></comment>
-	<entry key="playerdao">JugadorJDBCDao</entry>
+	<entry key="playerdao">JugadorXMLDao</entry>
 	<entry key="dbms">mysql</entry>
 	<entry key="database_name">seleccion</entry>
 	<entry key="user_name">root</entry>

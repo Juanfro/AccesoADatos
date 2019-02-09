@@ -1,5 +1,0 @@
-package seleccionEXISTDB;
-
-class FactoryXML {
-
-}

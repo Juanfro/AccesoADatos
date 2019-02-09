@@ -108,6 +108,12 @@ class SeleccionMain {
 	}
 
 	private void addPlayer() {
+		
+		int dorsal;
+		String nombre;
+		PositionJDBC position;
+		
+		Scanner scNewJugador = new Scanner(System.in);
 
 		System.out.println("\nAñadir jugador\n");
 		JugadorXML jugador = new JugadorXML(15, "Jugador15", PositionJDBC.DELANTERO);
