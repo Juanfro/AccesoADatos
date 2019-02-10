@@ -152,7 +152,7 @@ class JugadorXMLDao implements DaoSeleccion<JugadorXML> {
 
 			String xUpdateDelete = "" + "<xupdate:modifications version=\"1.0\" "//
 					+ "xmlns:xupdate=\"http://www.xmldb.org/xupdate\">"//
-					+ "<xupdate:remove select=\"/seleccion/jugadores/jugador[dorsal=15]\"/>"//
+					+ "<xupdate:remove select=\"/seleccion/jugadores/jugador[dorsal=" + num + "]\"/>"//
 					+ "</xupdate:modifications>";
 
 			// <xupdate:modifications version="1.0"

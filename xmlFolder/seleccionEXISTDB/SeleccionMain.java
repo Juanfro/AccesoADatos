@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import seleccionEXISTDB.JugadorXML.PositionJDBC;
+import seleccionJDBC.JugadorJDBC;
 
 /**
  * <p1>Escribe un programa que realice la misma funcionalidad que el ejercicio
@@ -115,25 +116,73 @@ class SeleccionMain {
 
 		Scanner scNewJugador = new Scanner(System.in);
 
-		System.out.println("\nAñadir jugador\n");
-		JugadorXML jugador = new JugadorXML(20, "Prueba Factory", PositionJDBC.DELANTERO);
+		System.out.println("\nAÑADIR JUGADOR:\n");
 
-		//JugadorXMLDao dao = new JugadorXMLDao();
+		// Dorsal
+		System.out.println("Dorsal del jugador:");
+		dorsal = Integer.parseInt(scNewJugador.nextLine());
+
+		// Nombre
+		System.out.println("Nombre del jugador:");
+		nombre = scNewJugador.nextLine();
+
+		// Posición
+		System.out.println("Elige la posición del jugador:");
+		System.out.println("1 - PORTERO");
+		System.out.println("2 - DEFENSA");
+		System.out.println("3 - MEDIO");
+		System.out.println("4 - DELANTERO");
+
+		int opcion = scNewJugador.nextInt();
+		position = null;
+
+		switch (opcion) {
+		case 1:
+			position = PositionJDBC.PORTERO;
+			break;
+		case 2:
+			position = PositionJDBC.DEFENSA;
+			break;
+		case 3:
+			position = PositionJDBC.MEDIO;
+			break;
+		case 4:
+			position = PositionJDBC.DELANTERO;
+			break;
+
+		default:
+			break;
+		}
+
+		// JugadorXML jugador = new JugadorXML(20, "Prueba Factory",
+		// PositionJDBC.DELANTERO);
+		JugadorXML jugador = new JugadorXML(dorsal, nombre, position);
+
+		// JugadorXMLDao dao = new JugadorXMLDao();
 
 		jugadorDao.save(jugador);
 
 	}
 
 	private void deletePlayer() {
-		System.out.println("\nBorrar jugador\n");
+		Scanner scDelete = new Scanner(System.in);
+		int numDorsal;
 
-		//JugadorXMLDao dao = new JugadorXMLDao();
-		jugadorDao.delete(15);
+		System.out.println("\nBorrar jugador\n");
+		
+		System.out.println("Escribe el número de dorsal del jugador a borrar:");
+		numDorsal = scDelete.nextInt();
+
+		// JugadorXMLDao dao = new JugadorXMLDao();
+		jugadorDao.delete(numDorsal);
 
 	}
 
 	private void fin() {
 		fin = true;
+		
+		listadoJugadores();
+		System.out.println("A por ellos OEOEOE!!");
 
 	}
 
