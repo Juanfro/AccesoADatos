@@ -49,6 +49,8 @@ class SeleccionMain {
 		fin = false;
 		seleccion = new SeleccionMain();
 
+		jugadorDao = FactoryXMLDao.getInstance().getDao();
+
 		seleccion.bienVenido();
 		while (!fin) {
 			seleccion.gestionar();
@@ -58,14 +60,12 @@ class SeleccionMain {
 
 	private void bienVenido() {
 		System.out.println("Bienvenido Seleccionador");
-		// listadoJugadores();
 	}
 
 	private void listadoJugadores() {
-		System.out.println("Listado Jugadores"); // TODO
+		System.out.println("Listado Jugadores");
 
-		JugadorXMLDao dao = new JugadorXMLDao();
-		dao.getAll();
+		jugadorDao.getAll();
 
 	}
 
@@ -108,32 +108,32 @@ class SeleccionMain {
 	}
 
 	private void addPlayer() {
-		
+
 		int dorsal;
 		String nombre;
 		PositionJDBC position;
-		
+
 		Scanner scNewJugador = new Scanner(System.in);
 
 		System.out.println("\nAñadir jugador\n");
-		JugadorXML jugador = new JugadorXML(15, "Jugador15", PositionJDBC.DELANTERO);
+		JugadorXML jugador = new JugadorXML(20, "Prueba Factory", PositionJDBC.DELANTERO);
 
-		JugadorXMLDao dao = new JugadorXMLDao();
+		//JugadorXMLDao dao = new JugadorXMLDao();
 
-		dao.save(jugador);
+		jugadorDao.save(jugador);
 
 	}
 
 	private void deletePlayer() {
 		System.out.println("\nBorrar jugador\n");
 
-		JugadorXMLDao dao = new JugadorXMLDao();
-		dao.delete(10);
+		//JugadorXMLDao dao = new JugadorXMLDao();
+		jugadorDao.delete(15);
 
 	}
 
 	private void fin() {
-		fin= true;
+		fin = true;
 
 	}
 

@@ -1,6 +1,7 @@
 package seleccionEXISTDB;
 
 import java.util.List;
+import java.util.Map;
 
 import org.xmldb.api.DatabaseManager;
 import org.xmldb.api.base.Collection;
@@ -14,9 +15,21 @@ import org.xmldb.api.modules.XUpdateQueryService;
 
 class JugadorXMLDao implements DaoSeleccion<JugadorXML> {
 
+	Collection col;
+	XMLConnection instance;
+
+	JugadorXMLDao(Map<String, String> config) {
+		instance = XMLConnection.getInstance(config);
+		col = instance.getColletcion();
+		try {
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	@Override
 	public JugadorXML get(int id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -26,12 +39,13 @@ class JugadorXMLDao implements DaoSeleccion<JugadorXML> {
 
 		try {
 
-			String driver = "org.exist.xmldb.DatabaseImpl";
-			Class cl = Class.forName(driver);
-			Database database = (Database) cl.newInstance();
-			DatabaseManager.registerDatabase(database);
-			Collection col = DatabaseManager.getCollection("xmldb:exist://localhost:8080/exist/xmlrpc/db/seleccion",
-					"admin", "admin");
+			/*
+			 * String driver = "org.exist.xmldb.DatabaseImpl"; Class cl =
+			 * Class.forName(driver); Database database = (Database) cl.newInstance();
+			 * DatabaseManager.registerDatabase(database); col =
+			 * DatabaseManager.getCollection(
+			 * "xmldb:exist://localhost:8080/exist/xmlrpc/db/seleccion", "admin", "admin");
+			 */
 
 			String queryNombre = "for $jugador in /seleccion/jugadores/jugador\r\n"
 					+ "return ( $jugador/dorsal//text(), $jugador/nombre//text(), $jugador/posicion//text()) ";
@@ -74,13 +88,11 @@ class JugadorXMLDao implements DaoSeleccion<JugadorXML> {
 
 		} catch (XMLDBException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		}
+		} /*
+			 * catch (ClassNotFoundException e) { e.printStackTrace(); } catch
+			 * (InstantiationException e) { e.printStackTrace(); } catch
+			 * (IllegalAccessException e) { e.printStackTrace(); }
+			 */
 
 		return null;
 	}
@@ -89,12 +101,13 @@ class JugadorXMLDao implements DaoSeleccion<JugadorXML> {
 	public void save(JugadorXML j) {
 		try {
 
-			String driver = "org.exist.xmldb.DatabaseImpl";
-			Class cl = Class.forName(driver);
-			Database database = (Database) cl.newInstance();
-			DatabaseManager.registerDatabase(database);
-			Collection col = DatabaseManager.getCollection("xmldb:exist://localhost:8080/exist/xmlrpc/db/seleccion",
-					"admin", "admin");
+			/*
+			 * String driver = "org.exist.xmldb.DatabaseImpl"; Class cl =
+			 * Class.forName(driver); Database database = (Database) cl.newInstance();
+			 * DatabaseManager.registerDatabase(database); Collection col =
+			 * DatabaseManager.getCollection(
+			 * "xmldb:exist://localhost:8080/exist/xmlrpc/db/seleccion", "admin", "admin");
+			 */
 
 			String xupdate //
 					= "<xupdate:modifications version=\"1.0\" "//
@@ -117,13 +130,11 @@ class JugadorXMLDao implements DaoSeleccion<JugadorXML> {
 
 		} catch (XMLDBException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		}
+		} /*
+			 * catch (ClassNotFoundException e) { e.printStackTrace(); } catch
+			 * (InstantiationException e) { e.printStackTrace(); } catch
+			 * (IllegalAccessException e) { e.printStackTrace(); }
+			 */
 
 	}
 
@@ -132,15 +143,16 @@ class JugadorXMLDao implements DaoSeleccion<JugadorXML> {
 		String driver = "org.exist.xmldb.DatabaseImpl";
 		Class cl;
 		try {
-			cl = Class.forName(driver);
-			Database database = (Database) cl.newInstance();
-			DatabaseManager.registerDatabase(database);
-			Collection col = DatabaseManager.getCollection("xmldb:exist://localhost:8080/exist/xmlrpc/db/seleccion",
-					"admin", "admin");
+			/*
+			 * cl = Class.forName(driver); Database database = (Database) cl.newInstance();
+			 * DatabaseManager.registerDatabase(database); Collection col =
+			 * DatabaseManager.getCollection(
+			 * "xmldb:exist://localhost:8080/exist/xmlrpc/db/seleccion", "admin", "admin");
+			 */
 
 			String xUpdateDelete = "" + "<xupdate:modifications version=\"1.0\" "//
 					+ "xmlns:xupdate=\"http://www.xmldb.org/xupdate\">"//
-					+ "<xupdate:remove select=\"/seleccion/jugadores/jugador[dorsal=10]\"/>"//
+					+ "<xupdate:remove select=\"/seleccion/jugadores/jugador[dorsal=15]\"/>"//
 					+ "</xupdate:modifications>";
 
 			// <xupdate:modifications version="1.0"
@@ -149,7 +161,7 @@ class JugadorXMLDao implements DaoSeleccion<JugadorXML> {
 			// select="/seleccion/jugadores/jugador[jugador/dorsal=10]"/>
 			// </xupdate:modifications>
 
-			System.out.println(xUpdateDelete);
+			// System.out.println(xUpdateDelete);
 
 			XUpdateQueryService service = (XUpdateQueryService) col.getService("XUpdateQueryService", "1.0");
 			service.setProperty("indent", "yes");
@@ -158,13 +170,11 @@ class JugadorXMLDao implements DaoSeleccion<JugadorXML> {
 			long modificaciones = service.updateResource("seleccion.xml", xUpdateDelete);
 			System.out.println(modificaciones + " Modificaciones de borrado procesadas\n");
 
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (XMLDBException e) {
+		} /*
+			 * catch (ClassNotFoundException e) { e.printStackTrace(); } catch
+			 * (InstantiationException e) { e.printStackTrace(); } catch
+			 * (IllegalAccessException e) { e.printStackTrace(); }
+			 */ catch (XMLDBException e) {
 			e.printStackTrace();
 		}
 

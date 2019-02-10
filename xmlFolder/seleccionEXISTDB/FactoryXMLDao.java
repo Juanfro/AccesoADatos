@@ -17,7 +17,7 @@ class FactoryXMLDao {
 	Properties daoProps;
 
 	String jugadorDao;
-	String configFile = "xmlFolder/sseleccionEXISTDB/properties.xml";
+	String configFile = "xmlFolder/seleccionEXISTDB/properties.xml";
 
 	DaoSeleccion<JugadorXML> daoSeleccion;
 
@@ -56,7 +56,7 @@ class FactoryXMLDao {
 
 	}
 
-	private DaoSeleccion<JugadorXML> getDao() {
+	 DaoSeleccion<JugadorXML> getDao() {
 
 		DaoSeleccion<JugadorXML> dao = null;
 
@@ -77,7 +77,16 @@ class FactoryXMLDao {
 
 			// dao = new JugadorRAFDao();// TODO Implementar
 		} else if (jugadorDao.equals("JugadorXMLDao")) {
-			dao = new JugadorXMLDao();
+
+			Map<String, String> config = new HashMap<String, String>();
+			config.put("dbms", daoProps.getProperty("exist_dbms"));
+			config.put("dbName", daoProps.getProperty("exist_database_name"));
+			config.put("userName", daoProps.getProperty("exist_user_name"));
+			config.put("password", daoProps.getProperty("exist_password"));
+			config.put("serverName", daoProps.getProperty("server_name"));
+			config.put("portNumber", daoProps.getProperty("exist_port_number"));
+
+			dao = new JugadorXMLDao(config);
 		}
 
 		return dao;

@@ -11,4 +11,14 @@
 	<entry key="port_number">3306</entry>
 
 	<entry key="filename">jugadores.dat</entry>
+
+	<!-- EXIST-DB -->
+
+	<entry key="exist_dbms">exist</entry>
+	<entry key="exist_database_name">exist/xmlrpc/db/seleccion</entry>
+	<entry key="exist_user_name">admin</entry>
+	<entry key="exist_password">admin</entry>
+	<entry key="exist_port_number">8080</entry>
+
+
 </properties>
