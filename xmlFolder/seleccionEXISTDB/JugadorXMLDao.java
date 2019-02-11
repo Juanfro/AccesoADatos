@@ -98,7 +98,7 @@ class JugadorXMLDao implements DaoSeleccion<JugadorXML> {
 	}
 
 	@Override
-	public void save(JugadorXML j) {
+	public void save(Misco j) {
 		try {
 
 			/*
