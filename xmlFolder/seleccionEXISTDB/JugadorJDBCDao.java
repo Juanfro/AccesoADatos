@@ -9,9 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import seleccionJDBC.DBConnectionSeleccion;
 import seleccionJDBC.JugadorJDBC.PositionJDBC;
 
-public class JugadorJDBCDao implements DaoSeleccion<JugadorJDBC> {
+public class JugadorJDBCDao implements DaoSeleccion<JugadorXML> {
 
 	private static final String SELECT_TODOS_JUGADORES = "select * from jugador order by dorsal";
 	private static final String INSERT_PLAYER = "INSERT INTO jugador (dorsal, nombre, posicion) VALUES (?, ?, ?)";
@@ -30,18 +31,18 @@ public class JugadorJDBCDao implements DaoSeleccion<JugadorJDBC> {
 	}
 
 	@Override
-	public JugadorJDBC get(int id) {
+	public JugadorXML get(int id) {
 		return null;
 	}
 
 	@Override
-	public List<JugadorJDBC> getAll() {
+	public List<JugadorXML> getAll() {
 
-		List<JugadorJDBC> listaJugadores = new ArrayList<JugadorJDBC>();
-		JugadorJDBC jugador;
+		List<JugadorXML> listaJugadores = new ArrayList<JugadorXML>();
+		JugadorXML jugador;
 		int dorsal;
 		String nombre;
-		PositionJDBC posicion;
+		seleccionEXISTDB.JugadorXML.PositionJDBC posicion;
 
 		try {
 			Statement statement = con.createStatement();
@@ -51,8 +52,8 @@ public class JugadorJDBCDao implements DaoSeleccion<JugadorJDBC> {
 				dorsal = resultSet.getInt("dorsal");
 				nombre = resultSet.getString("nombre");
 
-				posicion = PositionJDBC.valueOf(resultSet.getString("posicion").toUpperCase());
-				jugador = new JugadorJDBC(dorsal, nombre, posicion);
+				posicion = seleccionEXISTDB.JugadorXML.PositionJDBC.valueOf(resultSet.getString("posicion").toUpperCase());
+				jugador = new JugadorXML(dorsal, nombre, posicion);
 
 				listaJugadores.add(jugador);
 			}
@@ -64,7 +65,7 @@ public class JugadorJDBCDao implements DaoSeleccion<JugadorJDBC> {
 	}
 
 	@Override
-	public void save(JugadorJDBC jugador) {
+	public void save(JugadorXML jugador) {
 		try {
 			PreparedStatement preparedStatement = con.prepareStatement(INSERT_PLAYER);
 

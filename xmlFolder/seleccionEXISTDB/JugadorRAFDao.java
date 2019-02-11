@@ -16,7 +16,7 @@ import nationalTeam.Player;
 import seleccion.PlayerDao;
 import seleccionJDBC.JugadorJDBC.PositionJDBC;
 
-public class JugadorRAFDao implements DaoSeleccion<JugadorJDBC> {
+public class JugadorRAFDao implements DaoSeleccion<JugadorXML> {
 
 	public static final String FILE_NAME = "players";
 	public static final String DATA_EXT = ".dat";
@@ -56,9 +56,9 @@ public class JugadorRAFDao implements DaoSeleccion<JugadorJDBC> {
 	}
 
 	@Override
-	public JugadorJDBC get(int numPlayer) {
+	public JugadorXML get(int numPlayer) {
 
-		JugadorJDBC jugador = null;
+		JugadorXML jugador = null;
 
 		try {
 			int dataOffset = JugadorRAFDao.PLAYER_OBJECT_MAX_SIZE * (numPlayer);
@@ -75,11 +75,11 @@ public class JugadorRAFDao implements DaoSeleccion<JugadorJDBC> {
 					fcd.read(playerBB);
 					playerBB.flip();
 					byte[] se2 = playerBB.array();
-					jugador = (JugadorJDBC) JugadorRAFDao.deserialize(se2);
+					jugador = (JugadorXML) JugadorRAFDao.deserialize(se2);
 
 				}
 			} else {
-				jugador = new JugadorJDBC(-1, "Fin", PositionJDBC.PORTERO);
+				jugador = new JugadorXML(-1, "Fin", seleccionEXISTDB.JugadorXML.PositionJDBC.PORTERO);
 			}
 
 		} catch (Exception e) {
@@ -90,16 +90,16 @@ public class JugadorRAFDao implements DaoSeleccion<JugadorJDBC> {
 	}// END get
 
 	@Override
-	public List<JugadorJDBC> getAll() {
+	public List<JugadorXML> getAll() {
 
-		List<JugadorJDBC> lista = new ArrayList<JugadorJDBC>();
+		List<JugadorXML> lista = new ArrayList<JugadorXML>();
 		int numPlayer = 0;
 		boolean finFichero = false;
 
 		try {
 			while (!finFichero) {
 
-				JugadorJDBC jugador = get(numPlayer);
+				JugadorXML jugador = get(numPlayer);
 
 				if (jugador == null) {
 					numPlayer++;
@@ -119,7 +119,7 @@ public class JugadorRAFDao implements DaoSeleccion<JugadorJDBC> {
 	}
 
 	@Override
-	public void save(JugadorJDBC jugador) {
+	public void save(JugadorXML jugador) {
 
 		try {
 			byte[] se = JugadorRAFDao.serialize(jugador);
