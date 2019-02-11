@@ -112,6 +112,7 @@ class ListadoLibros {
 
 		System.out.print("Elemento raiz: ");
 
+		// Elemento de raiz
 		System.out.println(document.getDocumentElement().getNodeName() + "\n");
 
 		// LISTA de LIBROS
