@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name = "book")
 @XmlType(propOrder = { "id", "authors", "title", "genre", "price", "publish_date", "description" })
-class Libro extends MarshalClass implements Serializable {
+class Libro /* extends MarshalClass */ implements Serializable {
 
 	private String id;
 	private List<String> authors;
