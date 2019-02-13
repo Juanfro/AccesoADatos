@@ -27,6 +27,12 @@ public class MainXQJ {
 			 * "where $book/price > 30.00\r\n" + "return $book/title");
 			 */
 
+			/*
+			 * XQPreparedExpression xqpe =
+			 * conn.prepareExpression("for $producto in /catalogo/productos/producto\r\n" +
+			 * "    where $producto/categoria = \"verdura\"\r\n" + "    return $producto");
+			 */
+
 			XQPreparedExpression xqpe = conn.prepareExpression("for $producto in /catalogo/productos/producto\r\n"
 					+ "    where $producto/categoria = \"verdura\"\r\n" + "    return $producto/nombre/text()");
 
