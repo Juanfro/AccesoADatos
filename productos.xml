@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<catalogo>
+	<productos>
+		<producto>
+			<codigo>1</codigo>
+			<nombre>patatas</nombre>
+			<categoria>verdura</categoria>
+			<ofertas>
+				<oferta>dos por uno</oferta>
+				<oferta>tres por dos</oferta>
+			</ofertas>
+		</producto>
+		<producto>
+			<codigo>2</codigo>
+			<nombre>zanahorias</nombre>
+			<categoria>verdura</categoria>
+		</producto>
+		<producto>
+			<codigo>3</codigo>
+			<nombre>limpiacristales</nombre>
+			<categoria>drogueria</categoria>
+			<ofertas>
+				<oferta>cupón descuento</oferta>
+			</ofertas>
+		</producto>
+		<producto>
+			<codigo>4</codigo>
+			<nombre>martillo</nombre>
+			<categoria>ferretería</categoria>
+		</producto>
+	</productos>
+</catalogo>

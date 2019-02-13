@@ -32,7 +32,7 @@ public class Put {
 		 * if(args.length < 2) usage();
 		 */
 
-		String collection = "seleccion", file = "seleccion.xml";
+		String collection = "gestion", file = "productos.xml";
 
 		// initialize driver
 		String driver = "org.exist.xmldb.DatabaseImpl";

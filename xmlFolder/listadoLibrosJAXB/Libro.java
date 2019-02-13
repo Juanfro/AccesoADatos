@@ -22,7 +22,6 @@ class Libro /* extends MarshalClass */ implements Serializable {
 	private String description;
 
 	public Libro() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Libro(String id, List<String> authors, String title, String genre, Float price, String publish_date,
