@@ -12,9 +12,7 @@ import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.List;
 
-import nationalTeam.Player;
 import seleccion.PlayerDao;
-import seleccionJDBC.JugadorJDBC.PositionJDBC;
 
 public class JugadorRAFDao implements DaoSeleccion<JugadorXML> {
 

@@ -8,9 +8,6 @@ import java.util.InvalidPropertiesFormatException;
 import java.util.Map;
 import java.util.Properties;
 
-import seleccionJDBC.JugadorJDBCDao;
-import seleccionJDBC.JugadorRAFDao;
-
 class FactoryXMLDao {
 
 	private static FactoryXMLDao instance;

@@ -39,7 +39,7 @@ class XMLConnection {
 		return col;
 	}
 
-	 static XMLConnection getInstance(Map<String, String> config) {
+	static XMLConnection getInstance(Map<String, String> config) {
 		if (instance == null) {
 			instance = new XMLConnection(config);
 		}

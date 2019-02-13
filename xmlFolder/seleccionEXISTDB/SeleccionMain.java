@@ -4,7 +4,6 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import seleccionEXISTDB.JugadorXML.PositionJDBC;
-import seleccionJDBC.JugadorJDBC;
 
 /**
  * <p1>Escribe un programa que realice la misma funcionalidad que el ejercicio
