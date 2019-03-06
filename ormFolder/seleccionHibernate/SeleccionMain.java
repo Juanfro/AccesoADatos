@@ -1,6 +1,7 @@
 package seleccionHibernate;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -61,7 +62,16 @@ class SeleccionMain {
 	private void listadoJugadores() {
 		System.out.println("Listado Jugadores");
 
-		jugadorDao.getAll();
+		// jugadorDao.getAll();
+
+		// System.out.println(jugadorDao.getAll().toString());
+
+		List<Jugador> listJ = jugadorDao.getAll();
+
+		for (Jugador jugador : listJ) {
+			System.out.println("Dorsal: " + jugador.getDorsal() + " | Nombre: " + jugador.getNombre() + " | Posición: "
+					+ jugador.getPosicion());
+		}
 
 	}
 
@@ -177,7 +187,7 @@ class SeleccionMain {
 	private void fin() {
 		fin = true;
 
-		listadoJugadores();
+		// listadoJugadores();
 		System.out.println("A por ellos OEOEOE!!");
 
 	}
