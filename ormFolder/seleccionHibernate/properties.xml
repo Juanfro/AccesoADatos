@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment></comment>
+	<entry key="playerdao">Hibernate</entry>
+	<entry key="dbms">mysql</entry>
+	<entry key="database_name">seleccion</entry>
+	<entry key="user_name">root</entry>
+	<entry key="password"></entry>
+	<entry key="server_name">localhost</entry>
+	<entry key="port_number">3306</entry>
+
+	<entry key="filename">jugadores.dat</entry>
+
+	<!-- EXIST-DB -->
+
+	<entry key="exist_dbms">exist</entry>
+	<entry key="exist_database_name">exist/xmlrpc/db/seleccion</entry>
+	<entry key="exist_user_name">admin</entry>
+	<entry key="exist_password">admin</entry>
+	<entry key="exist_port_number">8080</entry>
+
+
+</properties>

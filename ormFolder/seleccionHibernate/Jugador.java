@@ -31,12 +31,15 @@ public class Jugador implements Serializable {
 	@Basic(optional = false)
 	@Column(name = "id")
 	private Integer id;
+
 	@Basic(optional = false)
 	@Column(name = "dorsal")
 	private int dorsal;
+
 	@Basic(optional = false)
 	@Column(name = "nombre")
 	private String nombre;
+
 	@Basic(optional = false)
 	@Column(name = "posicion")
 	private String posicion;
