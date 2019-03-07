@@ -32,7 +32,7 @@ class JugadorHibernateDao implements DaoSeleccion<Jugador> {
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
 
-			String hql = "FROM Jugador Jugador WHERE Jugador.dorsalm = :dorsal";
+			String hql = "FROM Jugador Jugador WHERE Jugador.dorsal = :dorsal";
 			Query query = session.createQuery(hql);
 			query.setParameter("dorsal", num);
 
