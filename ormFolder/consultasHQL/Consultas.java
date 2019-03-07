@@ -244,7 +244,7 @@ public class Consultas {
 		transaction = session.beginTransaction();
 		String queryHQL = "FROM Emp Emp WHERE Emp.deptno = 10 AND Emp.job='DIRECTOR'";
 		// String queryHQL = "FROM Emp Emp ";
-		Query query = session.createQuery(queryHQL);
+		Query<?> query = session.createQuery(queryHQL);
 
 		ArrayList<Emp> empList = (ArrayList<Emp>) query.list();
 
