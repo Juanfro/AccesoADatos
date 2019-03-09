@@ -1,4 +1,4 @@
-package neodatis;
+package partidosNeodatis;
 
 import java.util.Date;
 

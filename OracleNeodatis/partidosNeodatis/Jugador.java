@@ -1,4 +1,4 @@
-package neodatis;
+package partidosNeodatis;
 
 public class Jugador {
 
